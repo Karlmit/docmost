@@ -20,4 +20,17 @@
   .tableWrapper {
     overflow: hidden !important;
   }
+
+  .ProseMirror hr {
+    break-before: page;
+    page-break-before: always;
+    visibility: hidden;
+    border: none !important;
+    height: 0;
+    margin: 0;
+  }
+
+  .ProseMirror hr + * {
+    margin-top: 0 !important;
+  }
 }
