@@ -46,10 +46,18 @@
     background: #ffffff !important;
   }
 
+  :root[data-docmost-print-theme] .ProseMirror {
+    background: #ffffff !important;
+  }
+
+  :root[data-docmost-print-theme] .ProseMirror * {
+    background-color: transparent !important;
+    background-image: none !important;
+  }
+
   :root[data-docmost-print-theme="current"] .ProseMirror,
   :root[data-docmost-print-theme^="catppuccin-"] .ProseMirror,
   :root[data-docmost-print-theme="dracula"] .ProseMirror {
-    background: var(--docmost-md-page-bg) !important;
     print-color-adjust: exact;
     -webkit-print-color-adjust: exact;
   }
