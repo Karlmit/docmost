@@ -1,7 +1,21 @@
-import { ActionIcon, Group, Menu, Text, ThemeIcon, Tooltip } from "@mantine/core";
+import {
+  ActionIcon,
+  Box,
+  Button,
+  Group,
+  Menu,
+  Modal,
+  SimpleGrid,
+  Stack,
+  Text,
+  ThemeIcon,
+  Tooltip,
+  UnstyledButton,
+} from "@mantine/core";
 import {
   IconArrowRight,
   IconArrowsHorizontal,
+  IconCheck,
   IconDots,
   IconEye,
   IconEyeOff,
@@ -134,6 +148,18 @@ export default function PageHeaderMenu({ readOnly }: PageHeaderMenuProps) {
 interface PageActionMenuProps {
   readOnly?: boolean;
 }
+
+const PRINT_TEXT_COLOR_STORAGE_KEY = "docmost.printPdf.textColor";
+
+const PRINT_TEXT_COLORS = [
+  { label: "Black", value: "#000000", description: "Default" },
+  { label: "Latte", value: "#4c4f69", description: "Catppuccin text" },
+  { label: "Mauve", value: "#8839ef", description: "Catppuccin accent" },
+  { label: "Blue", value: "#1e66f5", description: "Catppuccin accent" },
+  { label: "Green", value: "#40a02b", description: "Catppuccin accent" },
+  { label: "Maroon", value: "#e64553", description: "Catppuccin accent" },
+];
+
 function PageActionMenu({ readOnly }: PageActionMenuProps) {
   const { t } = useTranslation();
   const [, setHistoryModalOpen] = useAtom(historyAtoms);
@@ -154,6 +180,13 @@ function PageActionMenu({ readOnly }: PageActionMenuProps) {
     verificationOpened,
     { open: openVerificationModal, close: closeVerificationModal },
   ] = useDisclosure(false);
+  const [
+    printSettingsOpened,
+    { open: openPrintSettingsModal, close: closePrintSettingsModal },
+  ] = useDisclosure(false);
+  const [printTextColor, setPrintTextColor] = useState(
+    PRINT_TEXT_COLORS[0].value,
+  );
   const [pageEditor] = useAtom(pageEditorAtom);
   const pageUpdatedAt = useTimeAgo(page?.updatedAt);
   const favoriteIds = useFavoriteIds("page", page?.spaceId);
@@ -163,6 +196,27 @@ function PageActionMenu({ readOnly }: PageActionMenuProps) {
   const { data: watchStatus } = useWatchStatusQuery(page?.id);
   const watchPage = useWatchPageMutation();
   const unwatchPage = useUnwatchPageMutation();
+
+  useEffect(() => {
+    const storedColor = window.localStorage.getItem(
+      PRINT_TEXT_COLOR_STORAGE_KEY,
+    );
+    if (
+      storedColor &&
+      PRINT_TEXT_COLORS.some((color) => color.value === storedColor)
+    ) {
+      setPrintTextColor(storedColor);
+      document.documentElement.style.setProperty(
+        "--docmost-print-text-color",
+        storedColor,
+      );
+    } else {
+      document.documentElement.style.setProperty(
+        "--docmost-print-text-color",
+        PRINT_TEXT_COLORS[0].value,
+      );
+    }
+  }, []);
 
   const handleCopyLink = () => {
     const pageUrl =
@@ -181,7 +235,15 @@ function PageActionMenu({ readOnly }: PageActionMenuProps) {
     notifications.show({ message: t("Copied") });
   };
 
-  const handlePrint = () => {
+  const handlePrint = (color = printTextColor) => {
+    document.documentElement.style.setProperty(
+      "--docmost-print-text-color",
+      color,
+    );
+    window.localStorage.setItem(PRINT_TEXT_COLOR_STORAGE_KEY, color);
+    setPrintTextColor(color);
+    closePrintSettingsModal();
+
     setTimeout(() => {
       window.print();
     }, 250);
@@ -311,7 +373,7 @@ function PageActionMenu({ readOnly }: PageActionMenuProps) {
 
           <Menu.Item
             leftSection={<IconPrinter size={16} />}
-            onClick={handlePrint}
+            onClick={openPrintSettingsModal}
           >
             {t("Print PDF")}
           </Menu.Item>
@@ -386,6 +448,77 @@ function PageActionMenu({ readOnly }: PageActionMenuProps) {
         opened={verificationOpened}
         onClose={closeVerificationModal}
       />
+
+      <Modal
+        opened={printSettingsOpened}
+        onClose={closePrintSettingsModal}
+        title={t("Print PDF settings")}
+        centered
+        size="md"
+      >
+        <Stack gap="md">
+          <Text size="sm" c="dimmed">
+            {t("Choose the text color used when printing this page to PDF.")}
+          </Text>
+
+          <SimpleGrid cols={{ base: 1, xs: 2 }} spacing="xs">
+            {PRINT_TEXT_COLORS.map((color) => {
+              const selected = printTextColor === color.value;
+
+              return (
+                <UnstyledButton
+                  key={color.value}
+                  onClick={() => setPrintTextColor(color.value)}
+                  aria-label={t("Use {{label}} text", {
+                    label: color.label,
+                  })}
+                  style={{
+                    border: selected
+                      ? "1px solid var(--mantine-primary-color-filled)"
+                      : "1px solid var(--mantine-color-default-border)",
+                    borderRadius: 8,
+                    padding: "var(--mantine-spacing-sm)",
+                  }}
+                >
+                  <Group gap="sm" wrap="nowrap">
+                    <Box
+                      style={{
+                        width: 22,
+                        height: 22,
+                        borderRadius: "50%",
+                        backgroundColor: color.value,
+                        border: "1px solid var(--mantine-color-default-border)",
+                        flexShrink: 0,
+                      }}
+                    />
+                    <Box style={{ flex: 1 }}>
+                      <Text size="sm" fw={500}>
+                        {color.label}
+                      </Text>
+                      <Text size="xs" c="dimmed">
+                        {color.description}
+                      </Text>
+                    </Box>
+                    {selected && <IconCheck size={16} />}
+                  </Group>
+                </UnstyledButton>
+              );
+            })}
+          </SimpleGrid>
+
+          <Group justify="flex-end">
+            <Button variant="default" onClick={closePrintSettingsModal}>
+              {t("Cancel")}
+            </Button>
+            <Button
+              leftSection={<IconPrinter size={16} />}
+              onClick={() => handlePrint()}
+            >
+              {t("Print PDF")}
+            </Button>
+          </Group>
+        </Stack>
+      </Modal>
     </>
   );
 }

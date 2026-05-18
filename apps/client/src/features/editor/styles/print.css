@@ -17,6 +17,15 @@
     box-shadow: none !important;
   }
 
+  .ProseMirror,
+  .ProseMirror * {
+    color: var(--docmost-print-text-color, #000000) !important;
+  }
+
+  .ProseMirror {
+    background: #ffffff !important;
+  }
+
   .tableWrapper {
     overflow: hidden !important;
   }
