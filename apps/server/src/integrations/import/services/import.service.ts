@@ -140,7 +140,9 @@ export class ImportService {
 
   async processMarkdown(markdownInput: string): Promise<any> {
     try {
-      const html = await markdownToHtml(markdownInput);
+      const html = await markdownToHtml(markdownInput, {
+        horizontalRuleAsPageBreak: true,
+      });
       return this.processHTML(html);
     } catch (err) {
       throw err;

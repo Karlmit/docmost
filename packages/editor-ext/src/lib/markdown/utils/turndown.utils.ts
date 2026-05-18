@@ -11,6 +11,15 @@ export function htmlToMarkdown(html: string): string {
     codeBlockStyle: 'fenced',
     hr: '---',
     bulletListMarker: '-',
+    blankReplacement: function (_content: string, node: HTMLInputElement) {
+      if (
+        node.nodeName === 'DIV' &&
+        node.getAttribute('data-type') === 'pageBreak'
+      ) {
+        return '\n\n---\n\n';
+      }
+      return (node as any).isBlock ? '\n\n' : '';
+    },
   });
 
   turndownService.use([
@@ -24,6 +33,7 @@ export function htmlToMarkdown(html: string): string {
     orderedListItem,
     mathInline,
     mathBlock,
+    pageBreak,
     iframeEmbed,
     video,
   ]);
@@ -165,6 +175,20 @@ function mathBlock(turndownService: _TurndownService) {
     },
     replacement: function (content: string) {
       return `\n$$\n${content}\n$$\n`;
+    },
+  });
+}
+
+function pageBreak(turndownService: _TurndownService) {
+  turndownService.addRule('pageBreak', {
+    filter: function (node: HTMLInputElement) {
+      return (
+        node.nodeName === 'DIV' &&
+        node.getAttribute('data-type') === 'pageBreak'
+      );
+    },
+    replacement: function () {
+      return '\n\n---\n\n';
     },
   });
 }
