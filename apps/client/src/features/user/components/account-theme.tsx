@@ -1,10 +1,9 @@
+import { Group, Text, Select } from "@mantine/core";
 import {
-  Group,
-  Text,
-  useMantineColorScheme,
-  Select,
-  MantineColorScheme,
-} from "@mantine/core";
+  isDocmostTheme,
+  themeOptions,
+  useDocmostTheme,
+} from "@/features/user/theme/docmost-theme.tsx";
 import { useTranslation } from "react-i18next";
 
 export default function AccountTheme() {
@@ -26,21 +25,22 @@ export default function AccountTheme() {
 
 function ThemeSwitcher() {
   const { t } = useTranslation();
-  const { colorScheme, setColorScheme } = useMantineColorScheme();
+  const { theme, setTheme } = useDocmostTheme();
 
-  const handleChange = (value: MantineColorScheme) => {
-    setColorScheme(value);
+  const handleChange = (value: string | null) => {
+    if (isDocmostTheme(value)) {
+      setTheme(value);
+    }
   };
 
   return (
     <Select
       label={t("Select theme")}
-      data={[
-        { value: "light", label: t("Light") },
-        { value: "dark", label: t("Dark") },
-        { value: "auto", label: t("System settings") },
-      ]}
-      value={colorScheme}
+      data={themeOptions.map((option) => ({
+        value: option.value,
+        label: option.labelKey ? t(option.labelKey) : option.label,
+      }))}
+      value={theme}
       onChange={handleChange}
       allowDeselect={false}
       checkIconPosition="right"
