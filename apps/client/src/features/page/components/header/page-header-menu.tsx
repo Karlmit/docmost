@@ -151,6 +151,7 @@ interface PageActionMenuProps {
 
 type PrintPdfTheme =
   | "plain"
+  | "polished-print"
   | "current"
   | "catppuccin-latte"
   | "catppuccin-frappe"
@@ -173,6 +174,12 @@ const PRINT_PDF_THEMES: Array<{
     swatch: "#000000",
   },
   {
+    label: "Polished print",
+    value: "polished-print",
+    description: "Color on white paper",
+    swatch: "#4f46e5",
+  },
+  {
     label: "Current theme",
     value: "current",
     description: "Match editor colors",
@@ -187,25 +194,25 @@ const PRINT_PDF_THEMES: Array<{
   {
     label: "Catppuccin Frappe",
     value: "catppuccin-frappe",
-    description: "Muted dark palette",
+    description: "Paper-adapted palette",
     swatch: "#8caaee",
   },
   {
     label: "Catppuccin Macchiato",
     value: "catppuccin-macchiato",
-    description: "Gentle dark palette",
+    description: "Paper-adapted palette",
     swatch: "#8aadf4",
   },
   {
     label: "Catppuccin Mocha",
     value: "catppuccin-mocha",
-    description: "Dark high accent",
+    description: "Paper-adapted palette",
     swatch: "#89b4fa",
   },
   {
     label: "Dracula",
     value: "dracula",
-    description: "Classic syntax colors",
+    description: "Paper-adapted palette",
     swatch: "#bd93f9",
   },
 ];

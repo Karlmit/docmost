@@ -413,7 +413,7 @@
 
 :root[data-docmost-print-theme="catppuccin-latte"] {
   --docmost-md-text: #4c4f69;
-  --docmost-md-page-bg: #eff1f5;
+  --docmost-md-page-bg: #ffffff;
   --docmost-md-heading: #7287fd;
   --docmost-md-heading-alt: #8839ef;
   --docmost-md-link: #1e66f5;
@@ -427,66 +427,82 @@
   --docmost-md-list-marker: #8839ef;
 }
 
+:root[data-docmost-print-theme="polished-print"] {
+  --docmost-md-text: #1f2937;
+  --docmost-md-page-bg: #ffffff;
+  --docmost-md-heading: #4f46e5;
+  --docmost-md-heading-alt: #7c3aed;
+  --docmost-md-link: #0f6ea8;
+  --docmost-md-quote-text: #7c2d12;
+  --docmost-md-quote-border: #f97316;
+  --docmost-md-strong: #9a3412;
+  --docmost-md-emphasis: #be123c;
+  --docmost-md-code-text: #047857;
+  --docmost-md-code-bg: #f3f4f6;
+  --docmost-md-rule: #94a3b8;
+  --docmost-md-list-marker: #7c3aed;
+}
+
 :root[data-docmost-print-theme="catppuccin-frappe"] {
-  --docmost-md-text: #c6d0f5;
-  --docmost-md-page-bg: #303446;
-  --docmost-md-heading: #babbf1;
-  --docmost-md-heading-alt: #ca9ee6;
-  --docmost-md-link: #8caaee;
-  --docmost-md-quote-text: #f2d5cf;
-  --docmost-md-quote-border: #babbf1;
-  --docmost-md-strong: #ef9f76;
-  --docmost-md-emphasis: #f2d5cf;
-  --docmost-md-code-text: #a6d189;
-  --docmost-md-code-bg: #414559;
-  --docmost-md-rule: #babbf1;
-  --docmost-md-list-marker: #ca9ee6;
+  --docmost-md-text: #303446;
+  --docmost-md-page-bg: #ffffff;
+  --docmost-md-heading: #5b5fc7;
+  --docmost-md-heading-alt: #8839ad;
+  --docmost-md-link: #2563ad;
+  --docmost-md-quote-text: #8f4d41;
+  --docmost-md-quote-border: #5b5fc7;
+  --docmost-md-strong: #9a4d1f;
+  --docmost-md-emphasis: #8f4d41;
+  --docmost-md-code-text: #3a6f2a;
+  --docmost-md-code-bg: #f1f3f9;
+  --docmost-md-rule: #a9aed8;
+  --docmost-md-list-marker: #8839ad;
 }
 
 :root[data-docmost-print-theme="catppuccin-macchiato"] {
-  --docmost-md-text: #cad3f5;
-  --docmost-md-page-bg: #24273a;
-  --docmost-md-heading: #b7bdf8;
-  --docmost-md-heading-alt: #c6a0f6;
-  --docmost-md-link: #8aadf4;
-  --docmost-md-quote-text: #f4dbd6;
-  --docmost-md-quote-border: #b7bdf8;
-  --docmost-md-strong: #f5a97f;
-  --docmost-md-emphasis: #f4dbd6;
-  --docmost-md-code-text: #a6da95;
-  --docmost-md-code-bg: #363a4f;
-  --docmost-md-rule: #b7bdf8;
-  --docmost-md-list-marker: #c6a0f6;
+  --docmost-md-text: #24273a;
+  --docmost-md-page-bg: #ffffff;
+  --docmost-md-heading: #5357bf;
+  --docmost-md-heading-alt: #7c3bb2;
+  --docmost-md-link: #1d5ea8;
+  --docmost-md-quote-text: #8d4b43;
+  --docmost-md-quote-border: #5357bf;
+  --docmost-md-strong: #9d4b24;
+  --docmost-md-emphasis: #8d4b43;
+  --docmost-md-code-text: #34712f;
+  --docmost-md-code-bg: #f0f2f8;
+  --docmost-md-rule: #a4a9d8;
+  --docmost-md-list-marker: #7c3bb2;
 }
 
 :root[data-docmost-print-theme="catppuccin-mocha"] {
-  --docmost-md-text: #cdd6f4;
-  --docmost-md-page-bg: #1e1e2e;
-  --docmost-md-heading: #b4befe;
-  --docmost-md-heading-alt: #cba6f7;
-  --docmost-md-link: #89b4fa;
-  --docmost-md-quote-text: #f5e0dc;
-  --docmost-md-quote-border: #b4befe;
-  --docmost-md-strong: #fab387;
-  --docmost-md-emphasis: #f5e0dc;
-  --docmost-md-code-text: #a6e3a1;
-  --docmost-md-code-bg: #313244;
-  --docmost-md-rule: #b4befe;
-  --docmost-md-list-marker: #cba6f7;
+  --docmost-md-text: #1e1e2e;
+  --docmost-md-page-bg: #ffffff;
+  --docmost-md-heading: #515bc9;
+  --docmost-md-heading-alt: #7f3fb2;
+  --docmost-md-link: #1e63ad;
+  --docmost-md-quote-text: #8f4b43;
+  --docmost-md-quote-border: #515bc9;
+  --docmost-md-strong: #9f4f2b;
+  --docmost-md-emphasis: #8f4b43;
+  --docmost-md-code-text: #2f742c;
+  --docmost-md-code-bg: #f0f1f7;
+  --docmost-md-rule: #9ea6d8;
+  --docmost-md-list-marker: #7f3fb2;
 }
 
 :root[data-docmost-print-theme="dracula"] {
-  --docmost-md-text: #f8f8f2;
-  --docmost-md-page-bg: #282a36;
-  --docmost-md-heading: #bd93f9;
-  --docmost-md-heading-alt: #8be9fd;
-  --docmost-md-link: #8be9fd;
-  --docmost-md-quote-text: #f1fa8c;
-  --docmost-md-quote-border: #bd93f9;
-  --docmost-md-strong: #ffb86c;
-  --docmost-md-emphasis: #f1fa8c;
-  --docmost-md-code-text: #50fa7b;
-  --docmost-md-code-bg: #21222c;
+  --docmost-md-text: #282a36;
+  --docmost-md-page-bg: #ffffff;
+  --docmost-md-heading: #6b3fb2;
+  --docmost-md-heading-alt: #08708a;
+  --docmost-md-link: #08708a;
+  --docmost-md-quote-text: #8a6500;
+  --docmost-md-quote-border: #6b3fb2;
+  --docmost-md-strong: #9a4b00;
+  --docmost-md-emphasis: #9c1f68;
+  --docmost-md-code-text: #1f7a3d;
+  --docmost-md-code-bg: #f3f3f6;
   --docmost-md-rule: #6272a4;
-  --docmost-md-list-marker: #ff79c6;
+  --docmost-md-list-marker: #9c1f68;
 }
