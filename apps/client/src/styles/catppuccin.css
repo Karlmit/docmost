@@ -114,6 +114,22 @@
   --ctp-crust: #11111b;
 }
 
+:root {
+  --docmost-md-text: var(--mantine-color-default-color);
+  --docmost-md-page-bg: var(--mantine-color-body);
+  --docmost-md-heading: light-dark(var(--mantine-color-blue-7), var(--mantine-color-blue-4));
+  --docmost-md-heading-alt: light-dark(var(--mantine-color-violet-7), var(--mantine-color-violet-4));
+  --docmost-md-link: light-dark(var(--mantine-color-blue-7), var(--mantine-color-blue-4));
+  --docmost-md-quote-text: var(--mantine-color-default-color);
+  --docmost-md-quote-border: light-dark(var(--mantine-color-gray-4), var(--mantine-color-dark-4));
+  --docmost-md-strong: light-dark(var(--mantine-color-gray-9), var(--mantine-color-gray-0));
+  --docmost-md-emphasis: light-dark(var(--mantine-color-orange-7), var(--mantine-color-yellow-4));
+  --docmost-md-code-text: light-dark(var(--mantine-color-pink-7), var(--mantine-color-pink-4));
+  --docmost-md-code-bg: light-dark(var(--mantine-color-gray-1), var(--mantine-color-dark-8));
+  --docmost-md-rule: light-dark(var(--mantine-color-gray-4), var(--mantine-color-dark-4));
+  --docmost-md-list-marker: light-dark(var(--mantine-color-violet-7), var(--mantine-color-violet-4));
+}
+
 :root[data-docmost-theme^="catppuccin-"] {
   --mantine-color-body: var(--ctp-base);
   --mantine-color-text: var(--ctp-text);
@@ -145,6 +161,107 @@
   --mantine-primary-color-light-color: var(--ctp-blue);
   --mantine-color-dark-light-color: var(--ctp-subtext1);
   --mantine-color-dark-light-hover: var(--ctp-surface0);
+  --docmost-md-text: var(--ctp-text);
+  --docmost-md-page-bg: var(--ctp-base);
+  --docmost-md-heading: var(--ctp-lavender);
+  --docmost-md-heading-alt: var(--ctp-mauve);
+  --docmost-md-link: var(--ctp-blue);
+  --docmost-md-quote-text: var(--ctp-rosewater);
+  --docmost-md-quote-border: var(--ctp-lavender);
+  --docmost-md-strong: var(--ctp-peach);
+  --docmost-md-emphasis: var(--ctp-rosewater);
+  --docmost-md-code-text: var(--ctp-green);
+  --docmost-md-code-bg: var(--ctp-surface0);
+  --docmost-md-rule: var(--ctp-lavender);
+  --docmost-md-list-marker: var(--ctp-mauve);
+}
+
+:root[data-docmost-theme="dracula"] {
+  --dracula-background: #282a36;
+  --dracula-current-line: #44475a;
+  --dracula-selection: #44475a;
+  --dracula-foreground: #f8f8f2;
+  --dracula-comment: #6272a4;
+  --dracula-red: #ff5555;
+  --dracula-orange: #ffb86c;
+  --dracula-yellow: #f1fa8c;
+  --dracula-green: #50fa7b;
+  --dracula-cyan: #8be9fd;
+  --dracula-purple: #bd93f9;
+  --dracula-pink: #ff79c6;
+  --mantine-color-body: var(--dracula-background);
+  --mantine-color-text: var(--dracula-foreground);
+  --mantine-color-dimmed: var(--dracula-comment);
+  --mantine-color-placeholder: var(--dracula-comment);
+  --mantine-color-anchor: var(--dracula-cyan);
+  --mantine-color-error: var(--dracula-red);
+  --mantine-color-default: var(--dracula-current-line);
+  --mantine-color-default-hover: #343746;
+  --mantine-color-default-color: var(--dracula-foreground);
+  --mantine-color-default-border: var(--dracula-selection);
+  --mantine-color-bright: var(--dracula-foreground);
+  --mantine-primary-color-filled: var(--dracula-purple);
+  --mantine-primary-color-filled-hover: #d6acff;
+  --mantine-primary-color-light: color-mix(
+    in srgb,
+    var(--dracula-purple),
+    transparent 82%
+  );
+  --mantine-primary-color-light-hover: color-mix(
+    in srgb,
+    var(--dracula-purple),
+    transparent 74%
+  );
+  --mantine-primary-color-light-color: var(--dracula-purple);
+  --mantine-color-dark-light-color: var(--dracula-foreground);
+  --mantine-color-dark-light-hover: var(--dracula-current-line);
+  --mantine-color-dark-0: var(--dracula-foreground);
+  --mantine-color-dark-1: var(--dracula-foreground);
+  --mantine-color-dark-2: var(--dracula-comment);
+  --mantine-color-dark-3: var(--dracula-selection);
+  --mantine-color-dark-4: var(--dracula-comment);
+  --mantine-color-dark-5: var(--dracula-current-line);
+  --mantine-color-dark-6: #343746;
+  --mantine-color-dark-7: var(--dracula-background);
+  --mantine-color-dark-8: #21222c;
+  --mantine-color-dark-9: #191a21;
+  --mantine-color-blue-4: var(--dracula-cyan);
+  --mantine-color-blue-5: var(--dracula-cyan);
+  --mantine-color-blue-6: var(--dracula-cyan);
+  --mantine-color-red-4: var(--dracula-red);
+  --mantine-color-red-5: var(--dracula-red);
+  --mantine-color-red-6: var(--dracula-red);
+  --mantine-color-green-4: var(--dracula-green);
+  --mantine-color-green-5: var(--dracula-green);
+  --mantine-color-green-6: var(--dracula-green);
+  --mantine-color-yellow-4: var(--dracula-yellow);
+  --mantine-color-yellow-5: var(--dracula-yellow);
+  --mantine-color-yellow-6: var(--dracula-yellow);
+  --mantine-color-orange-4: var(--dracula-orange);
+  --mantine-color-orange-5: var(--dracula-orange);
+  --mantine-color-orange-6: var(--dracula-orange);
+  --mantine-color-cyan-4: var(--dracula-cyan);
+  --mantine-color-cyan-5: var(--dracula-cyan);
+  --mantine-color-cyan-6: var(--dracula-cyan);
+  --mantine-color-pink-4: var(--dracula-pink);
+  --mantine-color-pink-5: var(--dracula-pink);
+  --mantine-color-pink-6: var(--dracula-pink);
+  --mantine-color-violet-4: var(--dracula-purple);
+  --mantine-color-violet-5: var(--dracula-purple);
+  --mantine-color-violet-6: var(--dracula-purple);
+  --docmost-md-text: var(--dracula-foreground);
+  --docmost-md-page-bg: var(--dracula-background);
+  --docmost-md-heading: var(--dracula-purple);
+  --docmost-md-heading-alt: var(--dracula-cyan);
+  --docmost-md-link: var(--dracula-cyan);
+  --docmost-md-quote-text: var(--dracula-yellow);
+  --docmost-md-quote-border: var(--dracula-purple);
+  --docmost-md-strong: var(--dracula-orange);
+  --docmost-md-emphasis: var(--dracula-yellow);
+  --docmost-md-code-text: var(--dracula-green);
+  --docmost-md-code-bg: #21222c;
+  --docmost-md-rule: var(--dracula-comment);
+  --docmost-md-list-marker: var(--dracula-pink);
 }
 
 :root[data-docmost-theme="catppuccin-latte"] {
@@ -292,4 +409,84 @@
   --mantine-color-grape-4: var(--ctp-mauve);
   --mantine-color-grape-5: var(--ctp-mauve);
   --mantine-color-grape-6: var(--ctp-mauve);
+}
+
+:root[data-docmost-print-theme="catppuccin-latte"] {
+  --docmost-md-text: #4c4f69;
+  --docmost-md-page-bg: #eff1f5;
+  --docmost-md-heading: #7287fd;
+  --docmost-md-heading-alt: #8839ef;
+  --docmost-md-link: #1e66f5;
+  --docmost-md-quote-text: #dc8a78;
+  --docmost-md-quote-border: #7287fd;
+  --docmost-md-strong: #fe640b;
+  --docmost-md-emphasis: #dc8a78;
+  --docmost-md-code-text: #40a02b;
+  --docmost-md-code-bg: #ccd0da;
+  --docmost-md-rule: #7287fd;
+  --docmost-md-list-marker: #8839ef;
+}
+
+:root[data-docmost-print-theme="catppuccin-frappe"] {
+  --docmost-md-text: #c6d0f5;
+  --docmost-md-page-bg: #303446;
+  --docmost-md-heading: #babbf1;
+  --docmost-md-heading-alt: #ca9ee6;
+  --docmost-md-link: #8caaee;
+  --docmost-md-quote-text: #f2d5cf;
+  --docmost-md-quote-border: #babbf1;
+  --docmost-md-strong: #ef9f76;
+  --docmost-md-emphasis: #f2d5cf;
+  --docmost-md-code-text: #a6d189;
+  --docmost-md-code-bg: #414559;
+  --docmost-md-rule: #babbf1;
+  --docmost-md-list-marker: #ca9ee6;
+}
+
+:root[data-docmost-print-theme="catppuccin-macchiato"] {
+  --docmost-md-text: #cad3f5;
+  --docmost-md-page-bg: #24273a;
+  --docmost-md-heading: #b7bdf8;
+  --docmost-md-heading-alt: #c6a0f6;
+  --docmost-md-link: #8aadf4;
+  --docmost-md-quote-text: #f4dbd6;
+  --docmost-md-quote-border: #b7bdf8;
+  --docmost-md-strong: #f5a97f;
+  --docmost-md-emphasis: #f4dbd6;
+  --docmost-md-code-text: #a6da95;
+  --docmost-md-code-bg: #363a4f;
+  --docmost-md-rule: #b7bdf8;
+  --docmost-md-list-marker: #c6a0f6;
+}
+
+:root[data-docmost-print-theme="catppuccin-mocha"] {
+  --docmost-md-text: #cdd6f4;
+  --docmost-md-page-bg: #1e1e2e;
+  --docmost-md-heading: #b4befe;
+  --docmost-md-heading-alt: #cba6f7;
+  --docmost-md-link: #89b4fa;
+  --docmost-md-quote-text: #f5e0dc;
+  --docmost-md-quote-border: #b4befe;
+  --docmost-md-strong: #fab387;
+  --docmost-md-emphasis: #f5e0dc;
+  --docmost-md-code-text: #a6e3a1;
+  --docmost-md-code-bg: #313244;
+  --docmost-md-rule: #b4befe;
+  --docmost-md-list-marker: #cba6f7;
+}
+
+:root[data-docmost-print-theme="dracula"] {
+  --docmost-md-text: #f8f8f2;
+  --docmost-md-page-bg: #282a36;
+  --docmost-md-heading: #bd93f9;
+  --docmost-md-heading-alt: #8be9fd;
+  --docmost-md-link: #8be9fd;
+  --docmost-md-quote-text: #f1fa8c;
+  --docmost-md-quote-border: #bd93f9;
+  --docmost-md-strong: #ffb86c;
+  --docmost-md-emphasis: #f1fa8c;
+  --docmost-md-code-text: #50fa7b;
+  --docmost-md-code-bg: #21222c;
+  --docmost-md-rule: #6272a4;
+  --docmost-md-list-marker: #ff79c6;
 }

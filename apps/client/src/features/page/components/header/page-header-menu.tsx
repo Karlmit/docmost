@@ -149,16 +149,70 @@ interface PageActionMenuProps {
   readOnly?: boolean;
 }
 
-const PRINT_TEXT_COLOR_STORAGE_KEY = "docmost.printPdf.textColor";
+type PrintPdfTheme =
+  | "plain"
+  | "current"
+  | "catppuccin-latte"
+  | "catppuccin-frappe"
+  | "catppuccin-macchiato"
+  | "catppuccin-mocha"
+  | "dracula";
 
-const PRINT_TEXT_COLORS = [
-  { label: "Black", value: "#000000", description: "Default" },
-  { label: "Latte", value: "#4c4f69", description: "Catppuccin text" },
-  { label: "Mauve", value: "#8839ef", description: "Catppuccin accent" },
-  { label: "Blue", value: "#1e66f5", description: "Catppuccin accent" },
-  { label: "Green", value: "#40a02b", description: "Catppuccin accent" },
-  { label: "Maroon", value: "#e64553", description: "Catppuccin accent" },
+const PRINT_PDF_THEME_STORAGE_KEY = "docmost.printPdf.theme";
+
+const PRINT_PDF_THEMES: Array<{
+  label: string;
+  value: PrintPdfTheme;
+  description: string;
+  swatch: string;
+}> = [
+  {
+    label: "Plain black",
+    value: "plain",
+    description: "High-contrast text",
+    swatch: "#000000",
+  },
+  {
+    label: "Current theme",
+    value: "current",
+    description: "Match editor colors",
+    swatch: "#8caaee",
+  },
+  {
+    label: "Catppuccin Latte",
+    value: "catppuccin-latte",
+    description: "Light palette",
+    swatch: "#1e66f5",
+  },
+  {
+    label: "Catppuccin Frappe",
+    value: "catppuccin-frappe",
+    description: "Muted dark palette",
+    swatch: "#8caaee",
+  },
+  {
+    label: "Catppuccin Macchiato",
+    value: "catppuccin-macchiato",
+    description: "Gentle dark palette",
+    swatch: "#8aadf4",
+  },
+  {
+    label: "Catppuccin Mocha",
+    value: "catppuccin-mocha",
+    description: "Dark high accent",
+    swatch: "#89b4fa",
+  },
+  {
+    label: "Dracula",
+    value: "dracula",
+    description: "Classic syntax colors",
+    swatch: "#bd93f9",
+  },
 ];
+
+function isPrintPdfTheme(value: string | null): value is PrintPdfTheme {
+  return PRINT_PDF_THEMES.some((theme) => theme.value === value);
+}
 
 function PageActionMenu({ readOnly }: PageActionMenuProps) {
   const { t } = useTranslation();
@@ -184,9 +238,7 @@ function PageActionMenu({ readOnly }: PageActionMenuProps) {
     printSettingsOpened,
     { open: openPrintSettingsModal, close: closePrintSettingsModal },
   ] = useDisclosure(false);
-  const [printTextColor, setPrintTextColor] = useState(
-    PRINT_TEXT_COLORS[0].value,
-  );
+  const [printPdfTheme, setPrintPdfTheme] = useState<PrintPdfTheme>("plain");
   const [pageEditor] = useAtom(pageEditorAtom);
   const pageUpdatedAt = useTimeAgo(page?.updatedAt);
   const favoriteIds = useFavoriteIds("page", page?.spaceId);
@@ -198,25 +250,28 @@ function PageActionMenu({ readOnly }: PageActionMenuProps) {
   const unwatchPage = useUnwatchPageMutation();
 
   useEffect(() => {
-    const storedColor = window.localStorage.getItem(
-      PRINT_TEXT_COLOR_STORAGE_KEY,
+    const storedTheme = window.localStorage.getItem(
+      PRINT_PDF_THEME_STORAGE_KEY,
     );
-    if (
-      storedColor &&
-      PRINT_TEXT_COLORS.some((color) => color.value === storedColor)
-    ) {
-      setPrintTextColor(storedColor);
-      document.documentElement.style.setProperty(
-        "--docmost-print-text-color",
-        storedColor,
-      );
-    } else {
-      document.documentElement.style.setProperty(
-        "--docmost-print-text-color",
-        PRINT_TEXT_COLORS[0].value,
-      );
-    }
+    const nextTheme = isPrintPdfTheme(storedTheme) ? storedTheme : "plain";
+
+    setPrintPdfTheme(nextTheme);
+    document.documentElement.dataset.docmostPrintTheme = nextTheme;
   }, []);
+
+  useEffect(() => {
+    return () => {
+      if (typeof document !== "undefined") {
+        delete document.documentElement.dataset.docmostPrintTheme;
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    if (printPdfTheme === "current") {
+      document.documentElement.dataset.docmostPrintTheme = "current";
+    }
+  }, [printPdfTheme]);
 
   const handleCopyLink = () => {
     const pageUrl =
@@ -235,13 +290,10 @@ function PageActionMenu({ readOnly }: PageActionMenuProps) {
     notifications.show({ message: t("Copied") });
   };
 
-  const handlePrint = (color = printTextColor) => {
-    document.documentElement.style.setProperty(
-      "--docmost-print-text-color",
-      color,
-    );
-    window.localStorage.setItem(PRINT_TEXT_COLOR_STORAGE_KEY, color);
-    setPrintTextColor(color);
+  const handlePrint = (theme = printPdfTheme) => {
+    document.documentElement.dataset.docmostPrintTheme = theme;
+    window.localStorage.setItem(PRINT_PDF_THEME_STORAGE_KEY, theme);
+    setPrintPdfTheme(theme);
     closePrintSettingsModal();
 
     setTimeout(() => {
@@ -458,19 +510,19 @@ function PageActionMenu({ readOnly }: PageActionMenuProps) {
       >
         <Stack gap="md">
           <Text size="sm" c="dimmed">
-            {t("Choose the text color used when printing this page to PDF.")}
+            {t("Choose how markdown colors are applied when printing this page.")}
           </Text>
 
           <SimpleGrid cols={{ base: 1, xs: 2 }} spacing="xs">
-            {PRINT_TEXT_COLORS.map((color) => {
-              const selected = printTextColor === color.value;
+            {PRINT_PDF_THEMES.map((printTheme) => {
+              const selected = printPdfTheme === printTheme.value;
 
               return (
                 <UnstyledButton
-                  key={color.value}
-                  onClick={() => setPrintTextColor(color.value)}
-                  aria-label={t("Use {{label}} text", {
-                    label: color.label,
+                  key={printTheme.value}
+                  onClick={() => setPrintPdfTheme(printTheme.value)}
+                  aria-label={t("Use {{label}} print theme", {
+                    label: printTheme.label,
                   })}
                   style={{
                     border: selected
@@ -486,17 +538,17 @@ function PageActionMenu({ readOnly }: PageActionMenuProps) {
                         width: 22,
                         height: 22,
                         borderRadius: "50%",
-                        backgroundColor: color.value,
+                        backgroundColor: printTheme.swatch,
                         border: "1px solid var(--mantine-color-default-border)",
                         flexShrink: 0,
                       }}
                     />
                     <Box style={{ flex: 1 }}>
                       <Text size="sm" fw={500}>
-                        {color.label}
+                        {printTheme.label}
                       </Text>
                       <Text size="xs" c="dimmed">
-                        {color.description}
+                        {printTheme.description}
                       </Text>
                     </Box>
                     {selected && <IconCheck size={16} />}

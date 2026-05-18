@@ -17,15 +17,6 @@
     box-shadow: none !important;
   }
 
-  .ProseMirror,
-  .ProseMirror * {
-    color: var(--docmost-print-text-color, #000000) !important;
-  }
-
-  .ProseMirror {
-    background: #ffffff !important;
-  }
-
   .tableWrapper {
     overflow: hidden !important;
   }
@@ -41,5 +32,25 @@
 
   .ProseMirror hr + * {
     margin-top: 0 !important;
+  }
+
+  :root:not([data-docmost-print-theme]) .ProseMirror,
+  :root:not([data-docmost-print-theme]) .ProseMirror *,
+  :root[data-docmost-print-theme="plain"] .ProseMirror,
+  :root[data-docmost-print-theme="plain"] .ProseMirror * {
+    color: #000000 !important;
+  }
+
+  :root:not([data-docmost-print-theme]) .ProseMirror,
+  :root[data-docmost-print-theme="plain"] .ProseMirror {
+    background: #ffffff !important;
+  }
+
+  :root[data-docmost-print-theme="current"] .ProseMirror,
+  :root[data-docmost-print-theme^="catppuccin-"] .ProseMirror,
+  :root[data-docmost-print-theme="dracula"] .ProseMirror {
+    background: var(--docmost-md-page-bg) !important;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
   }
 }

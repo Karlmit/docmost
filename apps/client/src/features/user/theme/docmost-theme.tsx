@@ -18,7 +18,9 @@ export type CatppuccinTheme =
   | "catppuccin-macchiato"
   | "catppuccin-mocha";
 
-export type DocmostTheme = MantineColorScheme | CatppuccinTheme;
+export type DraculaTheme = "dracula";
+
+export type DocmostTheme = MantineColorScheme | CatppuccinTheme | DraculaTheme;
 
 type DocmostThemeContextValue = {
   theme: DocmostTheme;
@@ -40,6 +42,7 @@ const DOCMOST_THEME_VALUES = new Set<DocmostTheme>([
   "catppuccin-frappe",
   "catppuccin-macchiato",
   "catppuccin-mocha",
+  "dracula",
 ]);
 
 export const themeOptions: ThemeOption[] = [
@@ -66,6 +69,11 @@ export const themeOptions: ThemeOption[] = [
     label: "Catppuccin Mocha",
     swatch: "#89b4fa",
   },
+  {
+    value: "dracula",
+    label: "Dracula",
+    swatch: "#bd93f9",
+  },
 ];
 
 const DocmostThemeContext = createContext<DocmostThemeContextValue | null>(
@@ -82,12 +90,16 @@ export function isCatppuccinTheme(
   return value.startsWith("catppuccin-");
 }
 
+export function isPaletteTheme(value: DocmostTheme) {
+  return isCatppuccinTheme(value) || value === "dracula";
+}
+
 export function getMantineColorScheme(theme: DocmostTheme): MantineColorScheme {
   if (theme === "catppuccin-latte") {
     return "light";
   }
 
-  if (isCatppuccinTheme(theme)) {
+  if (isPaletteTheme(theme)) {
     return "dark";
   }
 
@@ -99,7 +111,7 @@ export function applyDocmostTheme(theme: DocmostTheme) {
     return;
   }
 
-  if (isCatppuccinTheme(theme)) {
+  if (isPaletteTheme(theme)) {
     document.documentElement.dataset.docmostTheme = theme;
     return;
   }
