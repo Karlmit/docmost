@@ -114,6 +114,22 @@
   --ctp-crust: #11111b;
 }
 
+:root {
+  --docmost-md-text: var(--mantine-color-default-color);
+  --docmost-md-page-bg: var(--mantine-color-body);
+  --docmost-md-heading: light-dark(var(--mantine-color-blue-7), var(--mantine-color-blue-4));
+  --docmost-md-heading-alt: light-dark(var(--mantine-color-violet-7), var(--mantine-color-violet-4));
+  --docmost-md-link: light-dark(var(--mantine-color-blue-7), var(--mantine-color-blue-4));
+  --docmost-md-quote-text: var(--mantine-color-default-color);
+  --docmost-md-quote-border: light-dark(var(--mantine-color-gray-4), var(--mantine-color-dark-4));
+  --docmost-md-strong: light-dark(var(--mantine-color-gray-9), var(--mantine-color-gray-0));
+  --docmost-md-emphasis: light-dark(var(--mantine-color-orange-7), var(--mantine-color-yellow-4));
+  --docmost-md-code-text: light-dark(var(--mantine-color-pink-7), var(--mantine-color-pink-4));
+  --docmost-md-code-bg: light-dark(var(--mantine-color-gray-1), var(--mantine-color-dark-8));
+  --docmost-md-rule: light-dark(var(--mantine-color-gray-4), var(--mantine-color-dark-4));
+  --docmost-md-list-marker: light-dark(var(--mantine-color-violet-7), var(--mantine-color-violet-4));
+}
+
 :root[data-docmost-theme^="catppuccin-"] {
   --mantine-color-body: var(--ctp-base);
   --mantine-color-text: var(--ctp-text);
@@ -145,6 +161,19 @@
   --mantine-primary-color-light-color: var(--ctp-blue);
   --mantine-color-dark-light-color: var(--ctp-subtext1);
   --mantine-color-dark-light-hover: var(--ctp-surface0);
+  --docmost-md-text: var(--ctp-text);
+  --docmost-md-page-bg: var(--ctp-base);
+  --docmost-md-heading: var(--ctp-lavender);
+  --docmost-md-heading-alt: var(--ctp-mauve);
+  --docmost-md-link: var(--ctp-blue);
+  --docmost-md-quote-text: var(--ctp-rosewater);
+  --docmost-md-quote-border: var(--ctp-lavender);
+  --docmost-md-strong: var(--ctp-peach);
+  --docmost-md-emphasis: var(--ctp-rosewater);
+  --docmost-md-code-text: var(--ctp-green);
+  --docmost-md-code-bg: var(--ctp-surface0);
+  --docmost-md-rule: var(--ctp-lavender);
+  --docmost-md-list-marker: var(--ctp-mauve);
 }
 
 :root[data-docmost-theme="dracula"] {
@@ -220,6 +249,19 @@
   --mantine-color-violet-4: var(--dracula-purple);
   --mantine-color-violet-5: var(--dracula-purple);
   --mantine-color-violet-6: var(--dracula-purple);
+  --docmost-md-text: var(--dracula-foreground);
+  --docmost-md-page-bg: var(--dracula-background);
+  --docmost-md-heading: var(--dracula-purple);
+  --docmost-md-heading-alt: var(--dracula-cyan);
+  --docmost-md-link: var(--dracula-cyan);
+  --docmost-md-quote-text: var(--dracula-yellow);
+  --docmost-md-quote-border: var(--dracula-purple);
+  --docmost-md-strong: var(--dracula-orange);
+  --docmost-md-emphasis: var(--dracula-yellow);
+  --docmost-md-code-text: var(--dracula-green);
+  --docmost-md-code-bg: #21222c;
+  --docmost-md-rule: var(--dracula-comment);
+  --docmost-md-list-marker: var(--dracula-pink);
 }
 
 :root[data-docmost-theme="catppuccin-latte"] {

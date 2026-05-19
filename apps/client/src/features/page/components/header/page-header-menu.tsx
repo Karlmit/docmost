@@ -442,7 +442,6 @@ function PageActionMenu({ readOnly }: PageActionMenuProps) {
     const nextTheme = isPrintPdfTheme(storedTheme) ? storedTheme : "plain";
 
     setPrintPdfTheme(nextTheme);
-    applyPrintPdfTheme(nextTheme);
   }, []);
 
   useEffect(() => {
@@ -475,6 +474,7 @@ function PageActionMenu({ readOnly }: PageActionMenuProps) {
     window.localStorage.setItem(PRINT_PDF_THEME_STORAGE_KEY, theme);
     setPrintPdfTheme(theme);
     closePrintSettingsModal();
+    window.addEventListener("afterprint", clearPrintPdfTheme, { once: true });
 
     setTimeout(() => {
       window.print();
