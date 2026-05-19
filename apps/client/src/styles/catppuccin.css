@@ -1,0 +1,412 @@
+:root[data-docmost-theme="catppuccin-latte"] {
+  --ctp-rosewater: #dc8a78;
+  --ctp-flamingo: #dd7878;
+  --ctp-pink: #ea76cb;
+  --ctp-mauve: #8839ef;
+  --ctp-red: #d20f39;
+  --ctp-maroon: #e64553;
+  --ctp-peach: #fe640b;
+  --ctp-yellow: #df8e1d;
+  --ctp-green: #40a02b;
+  --ctp-teal: #179299;
+  --ctp-sky: #04a5e5;
+  --ctp-sapphire: #209fb5;
+  --ctp-blue: #1e66f5;
+  --ctp-lavender: #7287fd;
+  --ctp-text: #4c4f69;
+  --ctp-subtext1: #5c5f77;
+  --ctp-subtext0: #6c6f85;
+  --ctp-overlay2: #7c7f93;
+  --ctp-overlay1: #8c8fa1;
+  --ctp-overlay0: #9ca0b0;
+  --ctp-surface2: #acb0be;
+  --ctp-surface1: #bcc0cc;
+  --ctp-surface0: #ccd0da;
+  --ctp-base: #eff1f5;
+  --ctp-mantle: #e6e9ef;
+  --ctp-crust: #dce0e8;
+}
+
+:root[data-docmost-theme="catppuccin-frappe"] {
+  --ctp-rosewater: #f2d5cf;
+  --ctp-flamingo: #eebebe;
+  --ctp-pink: #f4b8e4;
+  --ctp-mauve: #ca9ee6;
+  --ctp-red: #e78284;
+  --ctp-maroon: #ea999c;
+  --ctp-peach: #ef9f76;
+  --ctp-yellow: #e5c890;
+  --ctp-green: #a6d189;
+  --ctp-teal: #81c8be;
+  --ctp-sky: #99d1db;
+  --ctp-sapphire: #85c1dc;
+  --ctp-blue: #8caaee;
+  --ctp-lavender: #babbf1;
+  --ctp-text: #c6d0f5;
+  --ctp-subtext1: #b5bfe2;
+  --ctp-subtext0: #a5adce;
+  --ctp-overlay2: #949cbb;
+  --ctp-overlay1: #838ba7;
+  --ctp-overlay0: #737994;
+  --ctp-surface2: #626880;
+  --ctp-surface1: #51576d;
+  --ctp-surface0: #414559;
+  --ctp-base: #303446;
+  --ctp-mantle: #292c3c;
+  --ctp-crust: #232634;
+}
+
+:root[data-docmost-theme="catppuccin-macchiato"] {
+  --ctp-rosewater: #f4dbd6;
+  --ctp-flamingo: #f0c6c6;
+  --ctp-pink: #f5bde6;
+  --ctp-mauve: #c6a0f6;
+  --ctp-red: #ed8796;
+  --ctp-maroon: #ee99a0;
+  --ctp-peach: #f5a97f;
+  --ctp-yellow: #eed49f;
+  --ctp-green: #a6da95;
+  --ctp-teal: #8bd5ca;
+  --ctp-sky: #91d7e3;
+  --ctp-sapphire: #7dc4e4;
+  --ctp-blue: #8aadf4;
+  --ctp-lavender: #b7bdf8;
+  --ctp-text: #cad3f5;
+  --ctp-subtext1: #b8c0e0;
+  --ctp-subtext0: #a5adcb;
+  --ctp-overlay2: #939ab7;
+  --ctp-overlay1: #8087a2;
+  --ctp-overlay0: #6e738d;
+  --ctp-surface2: #5b6078;
+  --ctp-surface1: #494d64;
+  --ctp-surface0: #363a4f;
+  --ctp-base: #24273a;
+  --ctp-mantle: #1e2030;
+  --ctp-crust: #181926;
+}
+
+:root[data-docmost-theme="catppuccin-mocha"] {
+  --ctp-rosewater: #f5e0dc;
+  --ctp-flamingo: #f2cdcd;
+  --ctp-pink: #f5c2e7;
+  --ctp-mauve: #cba6f7;
+  --ctp-red: #f38ba8;
+  --ctp-maroon: #eba0ac;
+  --ctp-peach: #fab387;
+  --ctp-yellow: #f9e2af;
+  --ctp-green: #a6e3a1;
+  --ctp-teal: #94e2d5;
+  --ctp-sky: #89dceb;
+  --ctp-sapphire: #74c7ec;
+  --ctp-blue: #89b4fa;
+  --ctp-lavender: #b4befe;
+  --ctp-text: #cdd6f4;
+  --ctp-subtext1: #bac2de;
+  --ctp-subtext0: #a6adc8;
+  --ctp-overlay2: #9399b2;
+  --ctp-overlay1: #7f849c;
+  --ctp-overlay0: #6c7086;
+  --ctp-surface2: #585b70;
+  --ctp-surface1: #45475a;
+  --ctp-surface0: #313244;
+  --ctp-base: #1e1e2e;
+  --ctp-mantle: #181825;
+  --ctp-crust: #11111b;
+}
+
+:root {
+  --docmost-md-text: var(--mantine-color-default-color);
+  --docmost-md-page-bg: var(--mantine-color-body);
+  --docmost-md-heading: light-dark(var(--mantine-color-blue-7), var(--mantine-color-blue-4));
+  --docmost-md-heading-alt: light-dark(var(--mantine-color-violet-7), var(--mantine-color-violet-4));
+  --docmost-md-link: light-dark(var(--mantine-color-blue-7), var(--mantine-color-blue-4));
+  --docmost-md-quote-text: var(--mantine-color-default-color);
+  --docmost-md-quote-border: light-dark(var(--mantine-color-gray-4), var(--mantine-color-dark-4));
+  --docmost-md-strong: light-dark(var(--mantine-color-gray-9), var(--mantine-color-gray-0));
+  --docmost-md-emphasis: light-dark(var(--mantine-color-orange-7), var(--mantine-color-yellow-4));
+  --docmost-md-code-text: light-dark(var(--mantine-color-pink-7), var(--mantine-color-pink-4));
+  --docmost-md-code-bg: light-dark(var(--mantine-color-gray-1), var(--mantine-color-dark-8));
+  --docmost-md-rule: light-dark(var(--mantine-color-gray-4), var(--mantine-color-dark-4));
+  --docmost-md-list-marker: light-dark(var(--mantine-color-violet-7), var(--mantine-color-violet-4));
+}
+
+:root[data-docmost-theme^="catppuccin-"] {
+  --mantine-color-body: var(--ctp-base);
+  --mantine-color-text: var(--ctp-text);
+  --mantine-color-dimmed: var(--ctp-subtext0);
+  --mantine-color-placeholder: var(--ctp-overlay1);
+  --mantine-color-anchor: var(--ctp-blue);
+  --mantine-color-error: var(--ctp-red);
+  --mantine-color-default: var(--ctp-surface0);
+  --mantine-color-default-hover: var(--ctp-surface1);
+  --mantine-color-default-color: var(--ctp-text);
+  --mantine-color-default-border: var(--ctp-surface0);
+  --mantine-color-bright: var(--ctp-text);
+  --mantine-primary-color-filled: var(--ctp-blue);
+  --mantine-primary-color-filled-hover: color-mix(
+    in srgb,
+    var(--ctp-blue),
+    var(--ctp-text) 12%
+  );
+  --mantine-primary-color-light: color-mix(
+    in srgb,
+    var(--ctp-blue),
+    transparent 82%
+  );
+  --mantine-primary-color-light-hover: color-mix(
+    in srgb,
+    var(--ctp-blue),
+    transparent 74%
+  );
+  --mantine-primary-color-light-color: var(--ctp-blue);
+  --mantine-color-dark-light-color: var(--ctp-subtext1);
+  --mantine-color-dark-light-hover: var(--ctp-surface0);
+  --docmost-md-text: var(--ctp-text);
+  --docmost-md-page-bg: var(--ctp-base);
+  --docmost-md-heading: var(--ctp-lavender);
+  --docmost-md-heading-alt: var(--ctp-mauve);
+  --docmost-md-link: var(--ctp-blue);
+  --docmost-md-quote-text: var(--ctp-rosewater);
+  --docmost-md-quote-border: var(--ctp-lavender);
+  --docmost-md-strong: var(--ctp-peach);
+  --docmost-md-emphasis: var(--ctp-rosewater);
+  --docmost-md-code-text: var(--ctp-green);
+  --docmost-md-code-bg: var(--ctp-surface0);
+  --docmost-md-rule: var(--ctp-lavender);
+  --docmost-md-list-marker: var(--ctp-mauve);
+}
+
+:root[data-docmost-theme="dracula"] {
+  --dracula-background: #282a36;
+  --dracula-current-line: #44475a;
+  --dracula-selection: #44475a;
+  --dracula-foreground: #f8f8f2;
+  --dracula-comment: #6272a4;
+  --dracula-red: #ff5555;
+  --dracula-orange: #ffb86c;
+  --dracula-yellow: #f1fa8c;
+  --dracula-green: #50fa7b;
+  --dracula-cyan: #8be9fd;
+  --dracula-purple: #bd93f9;
+  --dracula-pink: #ff79c6;
+  --mantine-color-body: var(--dracula-background);
+  --mantine-color-text: var(--dracula-foreground);
+  --mantine-color-dimmed: var(--dracula-comment);
+  --mantine-color-placeholder: var(--dracula-comment);
+  --mantine-color-anchor: var(--dracula-cyan);
+  --mantine-color-error: var(--dracula-red);
+  --mantine-color-default: var(--dracula-current-line);
+  --mantine-color-default-hover: #343746;
+  --mantine-color-default-color: var(--dracula-foreground);
+  --mantine-color-default-border: var(--dracula-selection);
+  --mantine-color-bright: var(--dracula-foreground);
+  --mantine-primary-color-filled: var(--dracula-purple);
+  --mantine-primary-color-filled-hover: #d6acff;
+  --mantine-primary-color-light: color-mix(
+    in srgb,
+    var(--dracula-purple),
+    transparent 82%
+  );
+  --mantine-primary-color-light-hover: color-mix(
+    in srgb,
+    var(--dracula-purple),
+    transparent 74%
+  );
+  --mantine-primary-color-light-color: var(--dracula-purple);
+  --mantine-color-dark-light-color: var(--dracula-foreground);
+  --mantine-color-dark-light-hover: var(--dracula-current-line);
+  --mantine-color-dark-0: var(--dracula-foreground);
+  --mantine-color-dark-1: var(--dracula-foreground);
+  --mantine-color-dark-2: var(--dracula-comment);
+  --mantine-color-dark-3: var(--dracula-selection);
+  --mantine-color-dark-4: var(--dracula-comment);
+  --mantine-color-dark-5: var(--dracula-current-line);
+  --mantine-color-dark-6: #343746;
+  --mantine-color-dark-7: var(--dracula-background);
+  --mantine-color-dark-8: #21222c;
+  --mantine-color-dark-9: #191a21;
+  --mantine-color-blue-4: var(--dracula-cyan);
+  --mantine-color-blue-5: var(--dracula-cyan);
+  --mantine-color-blue-6: var(--dracula-cyan);
+  --mantine-color-red-4: var(--dracula-red);
+  --mantine-color-red-5: var(--dracula-red);
+  --mantine-color-red-6: var(--dracula-red);
+  --mantine-color-green-4: var(--dracula-green);
+  --mantine-color-green-5: var(--dracula-green);
+  --mantine-color-green-6: var(--dracula-green);
+  --mantine-color-yellow-4: var(--dracula-yellow);
+  --mantine-color-yellow-5: var(--dracula-yellow);
+  --mantine-color-yellow-6: var(--dracula-yellow);
+  --mantine-color-orange-4: var(--dracula-orange);
+  --mantine-color-orange-5: var(--dracula-orange);
+  --mantine-color-orange-6: var(--dracula-orange);
+  --mantine-color-cyan-4: var(--dracula-cyan);
+  --mantine-color-cyan-5: var(--dracula-cyan);
+  --mantine-color-cyan-6: var(--dracula-cyan);
+  --mantine-color-pink-4: var(--dracula-pink);
+  --mantine-color-pink-5: var(--dracula-pink);
+  --mantine-color-pink-6: var(--dracula-pink);
+  --mantine-color-violet-4: var(--dracula-purple);
+  --mantine-color-violet-5: var(--dracula-purple);
+  --mantine-color-violet-6: var(--dracula-purple);
+  --docmost-md-text: var(--dracula-foreground);
+  --docmost-md-page-bg: var(--dracula-background);
+  --docmost-md-heading: var(--dracula-purple);
+  --docmost-md-heading-alt: var(--dracula-cyan);
+  --docmost-md-link: var(--dracula-cyan);
+  --docmost-md-quote-text: var(--dracula-yellow);
+  --docmost-md-quote-border: var(--dracula-purple);
+  --docmost-md-strong: var(--dracula-orange);
+  --docmost-md-emphasis: var(--dracula-yellow);
+  --docmost-md-code-text: var(--dracula-green);
+  --docmost-md-code-bg: #21222c;
+  --docmost-md-rule: var(--dracula-comment);
+  --docmost-md-list-marker: var(--dracula-pink);
+}
+
+:root[data-docmost-theme="catppuccin-latte"] {
+  --mantine-color-white: var(--ctp-base);
+  --mantine-color-black: var(--ctp-text);
+  --mantine-color-gray-0: var(--ctp-base);
+  --mantine-color-gray-1: var(--ctp-mantle);
+  --mantine-color-gray-2: var(--ctp-crust);
+  --mantine-color-gray-3: var(--ctp-surface0);
+  --mantine-color-gray-4: var(--ctp-surface1);
+  --mantine-color-gray-5: var(--ctp-surface2);
+  --mantine-color-gray-6: var(--ctp-overlay0);
+  --mantine-color-gray-7: var(--ctp-subtext0);
+  --mantine-color-gray-8: var(--ctp-subtext1);
+  --mantine-color-gray-9: var(--ctp-text);
+}
+
+:root[data-docmost-theme="catppuccin-frappe"],
+:root[data-docmost-theme="catppuccin-macchiato"],
+:root[data-docmost-theme="catppuccin-mocha"] {
+  --mantine-color-dark-0: var(--ctp-text);
+  --mantine-color-dark-1: var(--ctp-subtext1);
+  --mantine-color-dark-2: var(--ctp-subtext0);
+  --mantine-color-dark-3: var(--ctp-overlay2);
+  --mantine-color-dark-4: var(--ctp-overlay0);
+  --mantine-color-dark-5: var(--ctp-surface2);
+  --mantine-color-dark-6: var(--ctp-surface0);
+  --mantine-color-dark-7: var(--ctp-base);
+  --mantine-color-dark-8: var(--ctp-mantle);
+  --mantine-color-dark-9: var(--ctp-crust);
+}
+
+:root[data-docmost-theme^="catppuccin-"] {
+  --mantine-color-blue-0: color-mix(
+    in srgb,
+    var(--ctp-blue),
+    var(--ctp-base) 88%
+  );
+  --mantine-color-blue-1: color-mix(
+    in srgb,
+    var(--ctp-blue),
+    var(--ctp-base) 76%
+  );
+  --mantine-color-blue-2: color-mix(
+    in srgb,
+    var(--ctp-blue),
+    var(--ctp-base) 64%
+  );
+  --mantine-color-blue-3: color-mix(
+    in srgb,
+    var(--ctp-blue),
+    var(--ctp-base) 52%
+  );
+  --mantine-color-blue-4: color-mix(
+    in srgb,
+    var(--ctp-blue),
+    var(--ctp-base) 38%
+  );
+  --mantine-color-blue-5: var(--ctp-blue);
+  --mantine-color-blue-6: color-mix(
+    in srgb,
+    var(--ctp-blue),
+    var(--ctp-text) 12%
+  );
+  --mantine-color-blue-7: color-mix(
+    in srgb,
+    var(--ctp-blue),
+    var(--ctp-text) 24%
+  );
+  --mantine-color-blue-8: color-mix(
+    in srgb,
+    var(--ctp-blue),
+    var(--ctp-text) 36%
+  );
+  --mantine-color-blue-9: color-mix(
+    in srgb,
+    var(--ctp-blue),
+    var(--ctp-text) 48%
+  );
+  --mantine-color-blue-filled: var(--ctp-blue);
+  --mantine-color-blue-filled-hover: color-mix(
+    in srgb,
+    var(--ctp-blue),
+    var(--ctp-text) 12%
+  );
+  --mantine-color-blue-filled-color: var(--ctp-base);
+  --mantine-color-blue-light: color-mix(
+    in srgb,
+    var(--ctp-blue),
+    transparent 82%
+  );
+  --mantine-color-blue-light-hover: color-mix(
+    in srgb,
+    var(--ctp-blue),
+    transparent 74%
+  );
+  --mantine-color-blue-light-color: var(--ctp-blue);
+  --mantine-color-blue-outline: var(--ctp-blue);
+  --mantine-color-blue-outline-hover: color-mix(
+    in srgb,
+    var(--ctp-blue),
+    transparent 86%
+  );
+  --mantine-color-red-4: var(--ctp-maroon);
+  --mantine-color-red-5: var(--ctp-red);
+  --mantine-color-red-6: var(--ctp-red);
+  --mantine-color-red-7: color-mix(
+    in srgb,
+    var(--ctp-red),
+    var(--ctp-text) 18%
+  );
+  --mantine-color-red-filled: var(--ctp-red);
+  --mantine-color-red-filled-hover: color-mix(
+    in srgb,
+    var(--ctp-red),
+    var(--ctp-text) 12%
+  );
+  --mantine-color-red-light: color-mix(
+    in srgb,
+    var(--ctp-red),
+    transparent 82%
+  );
+  --mantine-color-red-light-color: var(--ctp-red);
+  --mantine-color-green-4: var(--ctp-green);
+  --mantine-color-green-5: var(--ctp-green);
+  --mantine-color-green-6: var(--ctp-green);
+  --mantine-color-yellow-4: var(--ctp-yellow);
+  --mantine-color-yellow-5: var(--ctp-yellow);
+  --mantine-color-yellow-6: var(--ctp-yellow);
+  --mantine-color-orange-4: var(--ctp-peach);
+  --mantine-color-orange-5: var(--ctp-peach);
+  --mantine-color-orange-6: var(--ctp-peach);
+  --mantine-color-teal-4: var(--ctp-teal);
+  --mantine-color-teal-5: var(--ctp-teal);
+  --mantine-color-teal-6: var(--ctp-teal);
+  --mantine-color-cyan-4: var(--ctp-sky);
+  --mantine-color-cyan-5: var(--ctp-sky);
+  --mantine-color-cyan-6: var(--ctp-sky);
+  --mantine-color-pink-4: var(--ctp-pink);
+  --mantine-color-pink-5: var(--ctp-pink);
+  --mantine-color-pink-6: var(--ctp-pink);
+  --mantine-color-violet-4: var(--ctp-mauve);
+  --mantine-color-violet-5: var(--ctp-mauve);
+  --mantine-color-violet-6: var(--ctp-mauve);
+  --mantine-color-grape-4: var(--ctp-mauve);
+  --mantine-color-grape-5: var(--ctp-mauve);
+  --mantine-color-grape-6: var(--ctp-mauve);
+}

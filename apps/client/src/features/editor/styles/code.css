@@ -13,13 +13,13 @@
     tab-size: 4;
 
     @mixin light {
-      background-color: var(--mantine-color-gray-0);
-      color: var(--mantine-color-gray-9);
+      background-color: var(--docmost-md-code-bg);
+      color: var(--docmost-md-text);
     }
 
     @mixin dark {
-      background-color: var(--mantine-color-dark-8);
-      color: var(--mantine-color-dark-1);
+      background-color: var(--docmost-md-code-bg);
+      color: var(--docmost-md-text);
     }
 
     code {
@@ -32,10 +32,7 @@
     /* Code styling */
     .hljs-comment,
     .hljs-quote {
-      color: light-dark(
-        var(--mantine-color-gray-6),
-        var(--mantine-color-dark-2)
-      );
+      color: var(--docmost-md-quote-border);
     }
 
     .hljs-variable,
@@ -48,7 +45,7 @@
     .hljs-name,
     .hljs-selector-id,
     .hljs-selector-class {
-      color: light-dark(var(--mantine-color-red-7), var(--mantine-color-red-5));
+      color: var(--docmost-md-strong);
     }
 
     .hljs-number,
@@ -58,32 +55,23 @@
     .hljs-literal,
     .hljs-type,
     .hljs-params {
-      color: light-dark(
-        var(--mantine-color-blue-7),
-        var(--mantine-color-cyan-5)
-      );
+      color: var(--docmost-md-heading-alt);
     }
 
     .hljs-string,
     .hljs-symbol,
     .hljs-bullet {
-      color: light-dark(var(--mantine-color-red-7), var(--mantine-color-red-5));
+      color: var(--docmost-md-emphasis);
     }
 
     .hljs-title,
     .hljs-section {
-      color: light-dark(
-        var(--mantine-color-pink-7),
-        var(--mantine-color-yellow-5)
-      );
+      color: var(--docmost-md-code-text);
     }
 
     .hljs-keyword,
     .hljs-selector-tag {
-      color: light-dark(
-        var(--mantine-color-violet-7),
-        var(--mantine-color-violet-3)
-      );
+      color: var(--docmost-md-list-marker);
     }
 
     .hljs-emphasis {
@@ -103,13 +91,13 @@
     margin: 0;
 
     @mixin where-light {
-      background-color: var(--code-bg, var(--mantine-color-gray-1));
-      color: var(--mantine-color-pink-7);
+      background-color: var(--code-bg, var(--docmost-md-code-bg));
+      color: var(--docmost-md-code-text);
     }
 
     @mixin where-dark {
-      background-color: var(--mantine-color-dark-8);
-      color: var(--mantine-color-pink-7);
+      background-color: var(--docmost-md-code-bg);
+      color: var(--docmost-md-code-text);
     }
   }
 }

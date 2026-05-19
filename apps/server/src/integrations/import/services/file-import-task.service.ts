@@ -484,7 +484,9 @@ export class FileImportTaskService {
               content = await fs.readFile(absPath, 'utf-8');
 
               if (page.fileExtension.toLowerCase() === '.md') {
-                content = await markdownToHtml(content);
+                content = await markdownToHtml(content, {
+                  horizontalRuleAsPageBreak: true,
+                });
               }
             } catch (err: any) {
               if (err?.code === 'ENOENT') {

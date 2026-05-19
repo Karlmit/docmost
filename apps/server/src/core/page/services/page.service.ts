@@ -1034,7 +1034,9 @@ export class PageService {
 
     switch (format) {
       case 'markdown': {
-        const html = await markdownToHtml(content as string);
+        const html = await markdownToHtml(content as string, {
+          horizontalRuleAsPageBreak: true,
+        });
         prosemirrorJson = htmlToJson(html as string);
         break;
       }

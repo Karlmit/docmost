@@ -20,4 +20,187 @@
   .tableWrapper {
     overflow: hidden !important;
   }
+
+  .ProseMirror {
+    font-size: 11pt !important;
+    line-height: 1.45 !important;
+    text-size-adjust: 100% !important;
+    -webkit-text-size-adjust: 100% !important;
+  }
+
+  .ProseMirror p,
+  .ProseMirror li {
+    font-size: 11pt !important;
+    line-height: 1.45 !important;
+  }
+
+  .ProseMirror h1,
+  .page-title .ProseMirror h1 {
+    font-size: 22pt !important;
+    line-height: 1.15 !important;
+    margin-top: 18pt !important;
+    margin-bottom: 8pt !important;
+  }
+
+  .ProseMirror h2 {
+    font-size: 17pt !important;
+    line-height: 1.2 !important;
+    margin-top: 15pt !important;
+    margin-bottom: 7pt !important;
+  }
+
+  .ProseMirror h3 {
+    font-size: 14pt !important;
+    line-height: 1.25 !important;
+    margin-top: 12pt !important;
+    margin-bottom: 6pt !important;
+  }
+
+  .ProseMirror h4,
+  .ProseMirror h5,
+  .ProseMirror h6 {
+    font-size: 12pt !important;
+    line-height: 1.3 !important;
+    margin-top: 10pt !important;
+    margin-bottom: 5pt !important;
+  }
+
+  .ProseMirror blockquote {
+    font-size: 10.5pt !important;
+    line-height: 1.45 !important;
+  }
+
+  .ProseMirror code {
+    font-size: 9.5pt !important;
+  }
+
+  .ProseMirror pre,
+  .ProseMirror pre code {
+    font-size: 9.5pt !important;
+    line-height: 1.4 !important;
+  }
+
+  .ProseMirror table {
+    font-size: 9.5pt !important;
+    line-height: 1.35 !important;
+  }
+
+  .ProseMirror hr {
+    break-before: page;
+    page-break-before: always;
+    visibility: hidden;
+    border: none !important;
+    height: 0;
+    margin: 0;
+  }
+
+  .ProseMirror hr + * {
+    margin-top: 0 !important;
+  }
+
+  :root:not([data-docmost-print-theme]) .ProseMirror,
+  :root:not([data-docmost-print-theme]) .ProseMirror *,
+  :root[data-docmost-print-theme="plain"] .ProseMirror,
+  :root[data-docmost-print-theme="plain"] .ProseMirror * {
+    color: #000000 !important;
+  }
+
+  :root:not([data-docmost-print-theme]) .ProseMirror,
+  :root[data-docmost-print-theme="plain"] .ProseMirror {
+    background: #ffffff !important;
+  }
+
+  :root[data-docmost-print-theme] .ProseMirror {
+    background: #ffffff !important;
+  }
+
+  :root[data-docmost-print-theme] .ProseMirror * {
+    background-color: transparent !important;
+    background-image: none !important;
+  }
+
+  :root[data-docmost-print-theme="polished-print"] .ProseMirror,
+  :root[data-docmost-print-theme="polished-print"] .ProseMirror p,
+  :root[data-docmost-print-theme="polished-print"] .ProseMirror li,
+  :root[data-docmost-print-theme^="catppuccin-"] .ProseMirror,
+  :root[data-docmost-print-theme^="catppuccin-"] .ProseMirror p,
+  :root[data-docmost-print-theme^="catppuccin-"] .ProseMirror li,
+  :root[data-docmost-print-theme="dracula"] .ProseMirror,
+  :root[data-docmost-print-theme="dracula"] .ProseMirror p,
+  :root[data-docmost-print-theme="dracula"] .ProseMirror li {
+    color: var(--docmost-md-text) !important;
+  }
+
+  :root[data-docmost-print-theme="polished-print"] .ProseMirror h1,
+  :root[data-docmost-print-theme="polished-print"] .ProseMirror h2,
+  :root[data-docmost-print-theme="polished-print"] .ProseMirror h3,
+  :root[data-docmost-print-theme^="catppuccin-"] .ProseMirror h1,
+  :root[data-docmost-print-theme^="catppuccin-"] .ProseMirror h2,
+  :root[data-docmost-print-theme^="catppuccin-"] .ProseMirror h3,
+  :root[data-docmost-print-theme="dracula"] .ProseMirror h1,
+  :root[data-docmost-print-theme="dracula"] .ProseMirror h2,
+  :root[data-docmost-print-theme="dracula"] .ProseMirror h3 {
+    color: var(--docmost-md-heading) !important;
+  }
+
+  :root[data-docmost-print-theme="polished-print"] .ProseMirror h4,
+  :root[data-docmost-print-theme="polished-print"] .ProseMirror h5,
+  :root[data-docmost-print-theme="polished-print"] .ProseMirror h6,
+  :root[data-docmost-print-theme^="catppuccin-"] .ProseMirror h4,
+  :root[data-docmost-print-theme^="catppuccin-"] .ProseMirror h5,
+  :root[data-docmost-print-theme^="catppuccin-"] .ProseMirror h6,
+  :root[data-docmost-print-theme="dracula"] .ProseMirror h4,
+  :root[data-docmost-print-theme="dracula"] .ProseMirror h5,
+  :root[data-docmost-print-theme="dracula"] .ProseMirror h6 {
+    color: var(--docmost-md-heading-alt) !important;
+  }
+
+  :root[data-docmost-print-theme="polished-print"] .ProseMirror strong,
+  :root[data-docmost-print-theme^="catppuccin-"] .ProseMirror strong,
+  :root[data-docmost-print-theme="dracula"] .ProseMirror strong {
+    color: var(--docmost-md-strong) !important;
+  }
+
+  :root[data-docmost-print-theme="polished-print"] .ProseMirror em,
+  :root[data-docmost-print-theme^="catppuccin-"] .ProseMirror em,
+  :root[data-docmost-print-theme="dracula"] .ProseMirror em {
+    color: var(--docmost-md-emphasis) !important;
+  }
+
+  :root[data-docmost-print-theme="polished-print"] .ProseMirror a,
+  :root[data-docmost-print-theme^="catppuccin-"] .ProseMirror a,
+  :root[data-docmost-print-theme="dracula"] .ProseMirror a {
+    color: var(--docmost-md-link) !important;
+    border-bottom-color: var(--docmost-md-link) !important;
+  }
+
+  :root[data-docmost-print-theme="polished-print"] .ProseMirror blockquote,
+  :root[data-docmost-print-theme^="catppuccin-"] .ProseMirror blockquote,
+  :root[data-docmost-print-theme="dracula"] .ProseMirror blockquote {
+    color: var(--docmost-md-quote-text) !important;
+    border-left-color: var(--docmost-md-quote-border) !important;
+  }
+
+  :root[data-docmost-print-theme="polished-print"] .ProseMirror code,
+  :root[data-docmost-print-theme="polished-print"] .ProseMirror pre,
+  :root[data-docmost-print-theme^="catppuccin-"] .ProseMirror code,
+  :root[data-docmost-print-theme^="catppuccin-"] .ProseMirror pre,
+  :root[data-docmost-print-theme="dracula"] .ProseMirror code,
+  :root[data-docmost-print-theme="dracula"] .ProseMirror pre {
+    color: var(--docmost-md-code-text) !important;
+  }
+
+  :root[data-docmost-print-theme="polished-print"] .ProseMirror li::marker,
+  :root[data-docmost-print-theme^="catppuccin-"] .ProseMirror li::marker,
+  :root[data-docmost-print-theme="dracula"] .ProseMirror li::marker {
+    color: var(--docmost-md-list-marker) !important;
+  }
+
+  :root[data-docmost-print-theme="current"] .ProseMirror,
+  :root[data-docmost-print-theme="polished-print"] .ProseMirror,
+  :root[data-docmost-print-theme^="catppuccin-"] .ProseMirror,
+  :root[data-docmost-print-theme="dracula"] .ProseMirror {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
 }

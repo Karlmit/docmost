@@ -79,7 +79,9 @@ export const MarkdownClipboard = Extension.create({
             const { tr } = view.state;
             const { from, to } = view.state.selection;
 
-            const parsed = markdownToHtml(text.replace(/\n+$/, ""));
+            const parsed = markdownToHtml(text.replace(/\n+$/, ""), {
+              horizontalRuleAsPageBreak: true,
+            });
             const body = elementFromString(parsed);
             normalizeTableColumnWidths(body);
 

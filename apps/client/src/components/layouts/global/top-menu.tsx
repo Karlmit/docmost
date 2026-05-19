@@ -1,10 +1,4 @@
-import {
-  Group,
-  Menu,
-  Text,
-  UnstyledButton,
-  useMantineColorScheme,
-} from "@mantine/core";
+import { Box, Group, Menu, Text, UnstyledButton } from "@mantine/core";
 import {
   IconBrightnessFilled,
   IconBrush,
@@ -26,12 +20,16 @@ import useAuth from "@/features/auth/hooks/use-auth.ts";
 import { CustomAvatar } from "@/components/ui/custom-avatar.tsx";
 import { useTranslation } from "react-i18next";
 import { AvatarIconType } from "@/features/attachments/types/attachment.types.ts";
+import {
+  themeOptions,
+  useDocmostTheme,
+} from "@/features/user/theme/docmost-theme.tsx";
 
 export default function TopMenu() {
   const { t } = useTranslation();
   const [currentUser] = useAtom(currentUserAtom);
   const { logout } = useAuth();
-  const { colorScheme, setColorScheme } = useMantineColorScheme();
+  const { theme, setTheme } = useDocmostTheme();
 
   const user = currentUser?.user;
   const workspace = currentUser?.workspace;
@@ -123,33 +121,36 @@ export default function TopMenu() {
           </Menu.Sub.Target>
 
           <Menu.Sub.Dropdown>
-            <Menu.Item
-              onClick={() => setColorScheme("light")}
-              leftSection={<IconSun size={16} />}
-              rightSection={
-                colorScheme === "light" ? <IconCheck size={16} /> : null
-              }
-            >
-              {t("Light")}
-            </Menu.Item>
-            <Menu.Item
-              onClick={() => setColorScheme("dark")}
-              leftSection={<IconMoon size={16} />}
-              rightSection={
-                colorScheme === "dark" ? <IconCheck size={16} /> : null
-              }
-            >
-              {t("Dark")}
-            </Menu.Item>
-            <Menu.Item
-              onClick={() => setColorScheme("auto")}
-              leftSection={<IconDeviceDesktop size={16} />}
-              rightSection={
-                colorScheme === "auto" ? <IconCheck size={16} /> : null
-              }
-            >
-              {t("System settings")}
-            </Menu.Item>
+            {themeOptions.map((option) => (
+              <Menu.Item
+                key={option.value}
+                onClick={() => setTheme(option.value)}
+                leftSection={
+                  option.value === "light" ? (
+                    <IconSun size={16} />
+                  ) : option.value === "dark" ? (
+                    <IconMoon size={16} />
+                  ) : option.value === "auto" ? (
+                    <IconDeviceDesktop size={16} />
+                  ) : (
+                    <Box
+                      w={16}
+                      h={16}
+                      style={{
+                        background: option.swatch,
+                        border: "1px solid var(--mantine-color-default-border)",
+                        borderRadius: "50%",
+                      }}
+                    />
+                  )
+                }
+                rightSection={
+                  theme === option.value ? <IconCheck size={16} /> : null
+                }
+              >
+                {option.labelKey ? t(option.labelKey) : option.label}
+              </Menu.Item>
+            ))}
           </Menu.Sub.Dropdown>
         </Menu.Sub>
 

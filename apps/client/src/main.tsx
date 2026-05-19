@@ -1,7 +1,8 @@
 import "@mantine/core/styles.css";
 import "@mantine/spotlight/styles.css";
 import "@mantine/notifications/styles.css";
-import '@mantine/dates/styles.css';
+import "@mantine/dates/styles.css";
+import "@/styles/catppuccin.css";
 
 import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
@@ -21,6 +22,13 @@ import {
   isPostHogEnabled,
 } from "@/lib/config.ts";
 import posthog from "posthog-js";
+import {
+  applyDocmostTheme,
+  DocmostThemeProvider,
+  getInitialDocmostTheme,
+  getMantineColorScheme,
+  persistDocmostTheme,
+} from "@/features/user/theme/docmost-theme.tsx";
 
 export const queryClient = new QueryClient({
   defaultOptions: {
@@ -43,21 +51,32 @@ if (isCloud() && isPostHogEnabled) {
 }
 
 const container = document.getElementById("root") as HTMLElement;
-const root = (container as any).__reactRoot ??= ReactDOM.createRoot(container);
+const root = ((container as any).__reactRoot ??=
+  ReactDOM.createRoot(container));
+const initialTheme = getInitialDocmostTheme();
+
+persistDocmostTheme(initialTheme);
+applyDocmostTheme(initialTheme);
 
 root.render(
   <BrowserRouter>
-    <MantineProvider theme={theme} cssVariablesResolver={mantineCssResolver}>
-      <ModalsProvider>
-        <QueryClientProvider client={queryClient}>
-          <Notifications position="bottom-center" limit={3} zIndex={10000} />
-          <HelmetProvider>
-            <PostHogProvider client={posthog}>
-              <App />
-            </PostHogProvider>
-          </HelmetProvider>
-        </QueryClientProvider>
-      </ModalsProvider>
+    <MantineProvider
+      theme={theme}
+      cssVariablesResolver={mantineCssResolver}
+      defaultColorScheme={getMantineColorScheme(initialTheme)}
+    >
+      <DocmostThemeProvider initialTheme={initialTheme}>
+        <ModalsProvider>
+          <QueryClientProvider client={queryClient}>
+            <Notifications position="bottom-center" limit={3} zIndex={10000} />
+            <HelmetProvider>
+              <PostHogProvider client={posthog}>
+                <App />
+              </PostHogProvider>
+            </HelmetProvider>
+          </QueryClientProvider>
+        </ModalsProvider>
+      </DocmostThemeProvider>
     </MantineProvider>
   </BrowserRouter>,
 );

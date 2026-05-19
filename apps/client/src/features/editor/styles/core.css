@@ -24,6 +24,12 @@
     padding: 0;
   }
 
+  &,
+  p,
+  li {
+    color: var(--docmost-md-text);
+  }
+
   > * + * {
     margin-top: 0.75em;
   }
@@ -53,6 +59,7 @@
   h1,
   h2,
   h3 {
+    color: var(--docmost-md-heading);
     letter-spacing: -0.01em;
     line-height: 1.2;
     font-weight: 600;
@@ -83,46 +90,46 @@
   h4,
   h5,
   h6 {
+    color: var(--docmost-md-heading-alt);
     line-height: 1.1;
     margin-bottom: 10px;
   }
 
+  strong {
+    color: var(--docmost-md-strong);
+  }
+
+  em {
+    color: var(--docmost-md-emphasis);
+  }
+
   code {
-    background-color: light-dark(
-      var(--mantine-color-gray-0),
-      var(--mantine-color-dark-8)
-    );
-    color: #616161;
+    background-color: var(--docmost-md-code-bg);
+    color: var(--docmost-md-code-text);
   }
 
   a {
-    color: light-dark(var(--mantine-color-dark-4), var(--mantine-color-dark-1));
-    @mixin light {
-      border-bottom: 0.07em solid var(--mantine-color-dark-0);
-    }
-    @mixin dark {
-      border-bottom: 0.07em solid var(--mantine-color-dark-2);
-    }
+    color: var(--docmost-md-link);
+    border-bottom: 0.07em solid color-mix(in srgb, var(--docmost-md-link), transparent 45%);
     font-weight: 500;
     text-decoration: none;
     cursor: pointer;
   }
 
   blockquote {
+    color: var(--docmost-md-quote-text);
     padding-left: 1rem;
-    border-left: 3px solid
-      light-dark(var(--mantine-color-gray-4), var(--mantine-color-dark-4));
+    border-left: 3px solid var(--docmost-md-quote-border);
     margin: 0;
+  }
+
+  li::marker {
+    color: var(--docmost-md-list-marker);
   }
 
   hr {
     border: none;
-    @mixin light {
-      border-top: 1px solid var(--mantine-color-gray-4);
-    }
-    @mixin dark {
-      border-top: 1px solid var(--mantine-color-dark-4);
-    }
+    border-top: 1px solid var(--docmost-md-rule);
 
     &:hover {
       cursor: pointer;

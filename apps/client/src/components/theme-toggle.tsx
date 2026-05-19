@@ -1,14 +1,10 @@
-import {
-  ActionIcon,
-  Tooltip,
-  useComputedColorScheme,
-  useMantineColorScheme,
-} from "@mantine/core";
+import { ActionIcon, Tooltip, useComputedColorScheme } from "@mantine/core";
 import { IconMoon, IconSun } from "@tabler/icons-react";
+import { useDocmostTheme } from "@/features/user/theme/docmost-theme.tsx";
 import classes from "./theme-toggle.module.css";
 
 export function ThemeToggle() {
-  const { setColorScheme } = useMantineColorScheme();
+  const { setTheme } = useDocmostTheme();
   const computedColorScheme = useComputedColorScheme();
 
   return (
@@ -16,7 +12,7 @@ export function ThemeToggle() {
       <ActionIcon
         variant="default"
         onClick={() => {
-          setColorScheme(computedColorScheme === "light" ? "dark" : "light");
+          setTheme(computedColorScheme === "light" ? "dark" : "light");
         }}
         aria-label="Toggle color scheme"
       >
