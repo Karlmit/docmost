@@ -163,8 +163,21 @@
 
 @media print {
   .tableWrapper.tableHeaderPinned table tr:first-child {
-    position: static;
-    transform: none;
+    position: static !important;
+    top: auto !important;
+    transform: none !important;
+    z-index: auto !important;
+  }
+
+  .tableWrapper.tableHeaderPinned table tr:first-child th,
+  .tableWrapper.tableHeaderPinned table tr:first-child td {
+    position: relative !important;
+    top: auto !important;
+    transform: none !important;
+  }
+
+  .tableReadonlySortChevron {
+    display: none !important;
   }
 }
 
