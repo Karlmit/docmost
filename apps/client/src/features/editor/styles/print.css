@@ -21,6 +21,70 @@
     overflow: hidden !important;
   }
 
+  .ProseMirror {
+    font-size: 11pt !important;
+    line-height: 1.45 !important;
+    text-size-adjust: 100% !important;
+    -webkit-text-size-adjust: 100% !important;
+  }
+
+  .ProseMirror p,
+  .ProseMirror li {
+    font-size: 11pt !important;
+    line-height: 1.45 !important;
+  }
+
+  .ProseMirror h1,
+  .page-title .ProseMirror h1 {
+    font-size: 22pt !important;
+    line-height: 1.15 !important;
+    margin-top: 18pt !important;
+    margin-bottom: 8pt !important;
+  }
+
+  .ProseMirror h2 {
+    font-size: 17pt !important;
+    line-height: 1.2 !important;
+    margin-top: 15pt !important;
+    margin-bottom: 7pt !important;
+  }
+
+  .ProseMirror h3 {
+    font-size: 14pt !important;
+    line-height: 1.25 !important;
+    margin-top: 12pt !important;
+    margin-bottom: 6pt !important;
+  }
+
+  .ProseMirror h4,
+  .ProseMirror h5,
+  .ProseMirror h6 {
+    font-size: 12pt !important;
+    line-height: 1.3 !important;
+    margin-top: 10pt !important;
+    margin-bottom: 5pt !important;
+  }
+
+  .ProseMirror blockquote {
+    font-size: 10.5pt !important;
+    line-height: 1.45 !important;
+  }
+
+  .ProseMirror code {
+    font-size: 9.5pt !important;
+  }
+
+  .ProseMirror pre,
+  .ProseMirror pre code {
+    font-size: 9.5pt !important;
+    line-height: 1.4 !important;
+  }
+
+  .ProseMirror table {
+    font-size: 9.5pt !important;
+    line-height: 1.35 !important;
+  }
+
   .ProseMirror hr {
     break-before: page;
     page-break-before: always;
