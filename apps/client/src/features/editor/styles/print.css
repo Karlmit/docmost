@@ -55,6 +55,83 @@
     background-image: none !important;
   }
 
+  :root[data-docmost-print-theme="polished-print"] .ProseMirror,
+  :root[data-docmost-print-theme="polished-print"] .ProseMirror p,
+  :root[data-docmost-print-theme="polished-print"] .ProseMirror li,
+  :root[data-docmost-print-theme^="catppuccin-"] .ProseMirror,
+  :root[data-docmost-print-theme^="catppuccin-"] .ProseMirror p,
+  :root[data-docmost-print-theme^="catppuccin-"] .ProseMirror li,
+  :root[data-docmost-print-theme="dracula"] .ProseMirror,
+  :root[data-docmost-print-theme="dracula"] .ProseMirror p,
+  :root[data-docmost-print-theme="dracula"] .ProseMirror li {
+    color: var(--docmost-md-text) !important;
+  }
+
+  :root[data-docmost-print-theme="polished-print"] .ProseMirror h1,
+  :root[data-docmost-print-theme="polished-print"] .ProseMirror h2,
+  :root[data-docmost-print-theme="polished-print"] .ProseMirror h3,
+  :root[data-docmost-print-theme^="catppuccin-"] .ProseMirror h1,
+  :root[data-docmost-print-theme^="catppuccin-"] .ProseMirror h2,
+  :root[data-docmost-print-theme^="catppuccin-"] .ProseMirror h3,
+  :root[data-docmost-print-theme="dracula"] .ProseMirror h1,
+  :root[data-docmost-print-theme="dracula"] .ProseMirror h2,
+  :root[data-docmost-print-theme="dracula"] .ProseMirror h3 {
+    color: var(--docmost-md-heading) !important;
+  }
+
+  :root[data-docmost-print-theme="polished-print"] .ProseMirror h4,
+  :root[data-docmost-print-theme="polished-print"] .ProseMirror h5,
+  :root[data-docmost-print-theme="polished-print"] .ProseMirror h6,
+  :root[data-docmost-print-theme^="catppuccin-"] .ProseMirror h4,
+  :root[data-docmost-print-theme^="catppuccin-"] .ProseMirror h5,
+  :root[data-docmost-print-theme^="catppuccin-"] .ProseMirror h6,
+  :root[data-docmost-print-theme="dracula"] .ProseMirror h4,
+  :root[data-docmost-print-theme="dracula"] .ProseMirror h5,
+  :root[data-docmost-print-theme="dracula"] .ProseMirror h6 {
+    color: var(--docmost-md-heading-alt) !important;
+  }
+
+  :root[data-docmost-print-theme="polished-print"] .ProseMirror strong,
+  :root[data-docmost-print-theme^="catppuccin-"] .ProseMirror strong,
+  :root[data-docmost-print-theme="dracula"] .ProseMirror strong {
+    color: var(--docmost-md-strong) !important;
+  }
+
+  :root[data-docmost-print-theme="polished-print"] .ProseMirror em,
+  :root[data-docmost-print-theme^="catppuccin-"] .ProseMirror em,
+  :root[data-docmost-print-theme="dracula"] .ProseMirror em {
+    color: var(--docmost-md-emphasis) !important;
+  }
+
+  :root[data-docmost-print-theme="polished-print"] .ProseMirror a,
+  :root[data-docmost-print-theme^="catppuccin-"] .ProseMirror a,
+  :root[data-docmost-print-theme="dracula"] .ProseMirror a {
+    color: var(--docmost-md-link) !important;
+    border-bottom-color: var(--docmost-md-link) !important;
+  }
+
+  :root[data-docmost-print-theme="polished-print"] .ProseMirror blockquote,
+  :root[data-docmost-print-theme^="catppuccin-"] .ProseMirror blockquote,
+  :root[data-docmost-print-theme="dracula"] .ProseMirror blockquote {
+    color: var(--docmost-md-quote-text) !important;
+    border-left-color: var(--docmost-md-quote-border) !important;
+  }
+
+  :root[data-docmost-print-theme="polished-print"] .ProseMirror code,
+  :root[data-docmost-print-theme="polished-print"] .ProseMirror pre,
+  :root[data-docmost-print-theme^="catppuccin-"] .ProseMirror code,
+  :root[data-docmost-print-theme^="catppuccin-"] .ProseMirror pre,
+  :root[data-docmost-print-theme="dracula"] .ProseMirror code,
+  :root[data-docmost-print-theme="dracula"] .ProseMirror pre {
+    color: var(--docmost-md-code-text) !important;
+  }
+
+  :root[data-docmost-print-theme="polished-print"] .ProseMirror li::marker,
+  :root[data-docmost-print-theme^="catppuccin-"] .ProseMirror li::marker,
+  :root[data-docmost-print-theme="dracula"] .ProseMirror li::marker {
+    color: var(--docmost-md-list-marker) !important;
+  }
+
   :root[data-docmost-print-theme="current"] .ProseMirror,
   :root[data-docmost-print-theme="polished-print"] .ProseMirror,
   :root[data-docmost-print-theme^="catppuccin-"] .ProseMirror,
