@@ -161,23 +161,70 @@ type PrintPdfTheme =
 
 const PRINT_PDF_THEME_STORAGE_KEY = "docmost.printPdf.theme";
 
+type PrintPdfThemeColors = {
+  text: string;
+  pageBg: string;
+  heading: string;
+  headingAlt: string;
+  link: string;
+  quoteText: string;
+  quoteBorder: string;
+  strong: string;
+  emphasis: string;
+  codeText: string;
+  codeBg: string;
+  rule: string;
+  listMarker: string;
+};
+
 const PRINT_PDF_THEMES: Array<{
   label: string;
   value: PrintPdfTheme;
   description: string;
   swatch: string;
+  colors?: PrintPdfThemeColors;
 }> = [
   {
     label: "Plain black",
     value: "plain",
     description: "High-contrast text",
     swatch: "#000000",
+    colors: {
+      text: "#000000",
+      pageBg: "#ffffff",
+      heading: "#000000",
+      headingAlt: "#000000",
+      link: "#000000",
+      quoteText: "#000000",
+      quoteBorder: "#000000",
+      strong: "#000000",
+      emphasis: "#000000",
+      codeText: "#000000",
+      codeBg: "#f3f4f6",
+      rule: "#000000",
+      listMarker: "#000000",
+    },
   },
   {
     label: "Polished print",
     value: "polished-print",
     description: "Color on white paper",
     swatch: "#4f46e5",
+    colors: {
+      text: "#1f2937",
+      pageBg: "#ffffff",
+      heading: "#4f46e5",
+      headingAlt: "#7c3aed",
+      link: "#0f6ea8",
+      quoteText: "#7c2d12",
+      quoteBorder: "#f97316",
+      strong: "#9a3412",
+      emphasis: "#be123c",
+      codeText: "#047857",
+      codeBg: "#f3f4f6",
+      rule: "#94a3b8",
+      listMarker: "#7c3aed",
+    },
   },
   {
     label: "Current theme",
@@ -190,35 +237,167 @@ const PRINT_PDF_THEMES: Array<{
     value: "catppuccin-latte",
     description: "Light palette",
     swatch: "#1e66f5",
+    colors: {
+      text: "#4c4f69",
+      pageBg: "#ffffff",
+      heading: "#7287fd",
+      headingAlt: "#8839ef",
+      link: "#1e66f5",
+      quoteText: "#dc8a78",
+      quoteBorder: "#7287fd",
+      strong: "#fe640b",
+      emphasis: "#dc8a78",
+      codeText: "#40a02b",
+      codeBg: "#f3f4f6",
+      rule: "#7287fd",
+      listMarker: "#8839ef",
+    },
   },
   {
     label: "Catppuccin Frappe",
     value: "catppuccin-frappe",
     description: "Paper-adapted palette",
     swatch: "#8caaee",
+    colors: {
+      text: "#303446",
+      pageBg: "#ffffff",
+      heading: "#5b5fc7",
+      headingAlt: "#8839ad",
+      link: "#2563ad",
+      quoteText: "#8f4d41",
+      quoteBorder: "#5b5fc7",
+      strong: "#9a4d1f",
+      emphasis: "#8f4d41",
+      codeText: "#3a6f2a",
+      codeBg: "#f1f3f9",
+      rule: "#a9aed8",
+      listMarker: "#8839ad",
+    },
   },
   {
     label: "Catppuccin Macchiato",
     value: "catppuccin-macchiato",
     description: "Paper-adapted palette",
     swatch: "#8aadf4",
+    colors: {
+      text: "#24273a",
+      pageBg: "#ffffff",
+      heading: "#5357bf",
+      headingAlt: "#7c3bb2",
+      link: "#1d5ea8",
+      quoteText: "#8d4b43",
+      quoteBorder: "#5357bf",
+      strong: "#9d4b24",
+      emphasis: "#8d4b43",
+      codeText: "#34712f",
+      codeBg: "#f0f2f8",
+      rule: "#a4a9d8",
+      listMarker: "#7c3bb2",
+    },
   },
   {
     label: "Catppuccin Mocha",
     value: "catppuccin-mocha",
     description: "Paper-adapted palette",
     swatch: "#89b4fa",
+    colors: {
+      text: "#1e1e2e",
+      pageBg: "#ffffff",
+      heading: "#515bc9",
+      headingAlt: "#7f3fb2",
+      link: "#1e63ad",
+      quoteText: "#8f4b43",
+      quoteBorder: "#515bc9",
+      strong: "#9f4f2b",
+      emphasis: "#8f4b43",
+      codeText: "#2f742c",
+      codeBg: "#f0f1f7",
+      rule: "#9ea6d8",
+      listMarker: "#7f3fb2",
+    },
   },
   {
     label: "Dracula",
     value: "dracula",
     description: "Paper-adapted palette",
     swatch: "#bd93f9",
+    colors: {
+      text: "#282a36",
+      pageBg: "#ffffff",
+      heading: "#6b3fb2",
+      headingAlt: "#08708a",
+      link: "#08708a",
+      quoteText: "#8a6500",
+      quoteBorder: "#6b3fb2",
+      strong: "#9a4b00",
+      emphasis: "#9c1f68",
+      codeText: "#1f7a3d",
+      codeBg: "#f3f3f6",
+      rule: "#6272a4",
+      listMarker: "#9c1f68",
+    },
   },
 ];
 
 function isPrintPdfTheme(value: string | null): value is PrintPdfTheme {
   return PRINT_PDF_THEMES.some((theme) => theme.value === value);
+}
+
+function getPrintPdfTheme(value: PrintPdfTheme) {
+  return (
+    PRINT_PDF_THEMES.find((theme) => theme.value === value) ??
+    PRINT_PDF_THEMES[0]
+  );
+}
+
+function applyPrintPdfTheme(theme: PrintPdfTheme) {
+  document.documentElement.dataset.docmostPrintTheme = theme;
+
+  const colors = getPrintPdfTheme(theme).colors;
+  if (!colors) {
+    clearPrintPdfThemeVariables();
+    document.documentElement.dataset.docmostPrintTheme = theme;
+    return;
+  }
+
+  const rootStyle = document.documentElement.style;
+  rootStyle.setProperty("--docmost-md-text", colors.text);
+  rootStyle.setProperty("--docmost-md-page-bg", colors.pageBg);
+  rootStyle.setProperty("--docmost-md-heading", colors.heading);
+  rootStyle.setProperty("--docmost-md-heading-alt", colors.headingAlt);
+  rootStyle.setProperty("--docmost-md-link", colors.link);
+  rootStyle.setProperty("--docmost-md-quote-text", colors.quoteText);
+  rootStyle.setProperty("--docmost-md-quote-border", colors.quoteBorder);
+  rootStyle.setProperty("--docmost-md-strong", colors.strong);
+  rootStyle.setProperty("--docmost-md-emphasis", colors.emphasis);
+  rootStyle.setProperty("--docmost-md-code-text", colors.codeText);
+  rootStyle.setProperty("--docmost-md-code-bg", colors.codeBg);
+  rootStyle.setProperty("--docmost-md-rule", colors.rule);
+  rootStyle.setProperty("--docmost-md-list-marker", colors.listMarker);
+}
+
+function clearPrintPdfThemeVariables() {
+  const rootStyle = document.documentElement.style;
+  [
+    "--docmost-md-text",
+    "--docmost-md-page-bg",
+    "--docmost-md-heading",
+    "--docmost-md-heading-alt",
+    "--docmost-md-link",
+    "--docmost-md-quote-text",
+    "--docmost-md-quote-border",
+    "--docmost-md-strong",
+    "--docmost-md-emphasis",
+    "--docmost-md-code-text",
+    "--docmost-md-code-bg",
+    "--docmost-md-rule",
+    "--docmost-md-list-marker",
+  ].forEach((property) => rootStyle.removeProperty(property));
+}
+
+function clearPrintPdfTheme() {
+  delete document.documentElement.dataset.docmostPrintTheme;
+  clearPrintPdfThemeVariables();
 }
 
 function PageActionMenu({ readOnly }: PageActionMenuProps) {
@@ -263,22 +442,16 @@ function PageActionMenu({ readOnly }: PageActionMenuProps) {
     const nextTheme = isPrintPdfTheme(storedTheme) ? storedTheme : "plain";
 
     setPrintPdfTheme(nextTheme);
-    document.documentElement.dataset.docmostPrintTheme = nextTheme;
+    applyPrintPdfTheme(nextTheme);
   }, []);
 
   useEffect(() => {
     return () => {
       if (typeof document !== "undefined") {
-        delete document.documentElement.dataset.docmostPrintTheme;
+        clearPrintPdfTheme();
       }
     };
   }, []);
-
-  useEffect(() => {
-    if (printPdfTheme === "current") {
-      document.documentElement.dataset.docmostPrintTheme = "current";
-    }
-  }, [printPdfTheme]);
 
   const handleCopyLink = () => {
     const pageUrl =
@@ -298,7 +471,7 @@ function PageActionMenu({ readOnly }: PageActionMenuProps) {
   };
 
   const handlePrint = (theme = printPdfTheme) => {
-    document.documentElement.dataset.docmostPrintTheme = theme;
+    applyPrintPdfTheme(theme);
     window.localStorage.setItem(PRINT_PDF_THEME_STORAGE_KEY, theme);
     setPrintPdfTheme(theme);
     closePrintSettingsModal();
@@ -324,6 +497,23 @@ function PageActionMenu({ readOnly }: PageActionMenuProps) {
     } else {
       addFavoriteMutation.mutate(params);
     }
+  };
+
+  const selectedPrintTheme = getPrintPdfTheme(printPdfTheme);
+  const previewColors = selectedPrintTheme.colors ?? {
+    text: "var(--docmost-md-text)",
+    pageBg: "#ffffff",
+    heading: "var(--docmost-md-heading)",
+    headingAlt: "var(--docmost-md-heading-alt)",
+    link: "var(--docmost-md-link)",
+    quoteText: "var(--docmost-md-quote-text)",
+    quoteBorder: "var(--docmost-md-quote-border)",
+    strong: "var(--docmost-md-strong)",
+    emphasis: "var(--docmost-md-emphasis)",
+    codeText: "var(--docmost-md-code-text)",
+    codeBg: "#f3f4f6",
+    rule: "var(--docmost-md-rule)",
+    listMarker: "var(--docmost-md-list-marker)",
   };
 
   return (
@@ -513,70 +703,183 @@ function PageActionMenu({ readOnly }: PageActionMenuProps) {
         onClose={closePrintSettingsModal}
         title={t("Print PDF settings")}
         centered
-        size="md"
+        size="xl"
       >
-        <Stack gap="md">
-          <Text size="sm" c="dimmed">
-            {t("Choose how markdown colors are applied when printing this page.")}
-          </Text>
+        <Box
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+            gap: "var(--mantine-spacing-lg)",
+            alignItems: "start",
+          }}
+        >
+          <Stack gap="md">
+            <Text size="sm" c="dimmed">
+              {t("Choose how markdown colors are applied when printing this page.")}
+            </Text>
 
-          <SimpleGrid cols={{ base: 1, xs: 2 }} spacing="xs">
-            {PRINT_PDF_THEMES.map((printTheme) => {
-              const selected = printPdfTheme === printTheme.value;
+            <SimpleGrid cols={{ base: 1, xs: 2 }} spacing="xs">
+              {PRINT_PDF_THEMES.map((printTheme) => {
+                const selected = printPdfTheme === printTheme.value;
 
-              return (
-                <UnstyledButton
-                  key={printTheme.value}
-                  onClick={() => setPrintPdfTheme(printTheme.value)}
-                  aria-label={t("Use {{label}} print theme", {
-                    label: printTheme.label,
-                  })}
+                return (
+                  <UnstyledButton
+                    key={printTheme.value}
+                    onClick={() => setPrintPdfTheme(printTheme.value)}
+                    aria-label={t("Use {{label}} print theme", {
+                      label: printTheme.label,
+                    })}
+                    style={{
+                      border: selected
+                        ? "1px solid var(--mantine-primary-color-filled)"
+                        : "1px solid var(--mantine-color-default-border)",
+                      borderRadius: 8,
+                      padding: "var(--mantine-spacing-sm)",
+                    }}
+                  >
+                    <Group gap="sm" wrap="nowrap">
+                      <Box
+                        style={{
+                          width: 22,
+                          height: 22,
+                          borderRadius: "50%",
+                          backgroundColor: printTheme.swatch,
+                          border: "1px solid var(--mantine-color-default-border)",
+                          flexShrink: 0,
+                        }}
+                      />
+                      <Box style={{ flex: 1 }}>
+                        <Text size="sm" fw={500}>
+                          {printTheme.label}
+                        </Text>
+                        <Text size="xs" c="dimmed">
+                          {printTheme.description}
+                        </Text>
+                      </Box>
+                      {selected && <IconCheck size={16} />}
+                    </Group>
+                  </UnstyledButton>
+                );
+              })}
+            </SimpleGrid>
+
+            <Group justify="flex-end">
+              <Button variant="default" onClick={closePrintSettingsModal}>
+                {t("Cancel")}
+              </Button>
+              <Button
+                leftSection={<IconPrinter size={16} />}
+                onClick={() => handlePrint()}
+              >
+                {t("Print PDF")}
+              </Button>
+            </Group>
+          </Stack>
+
+          <Box
+            style={{
+              border: "1px solid var(--mantine-color-default-border)",
+              borderRadius: 8,
+              padding: "var(--mantine-spacing-md)",
+              background: "var(--mantine-color-body)",
+            }}
+          >
+            <Text size="sm" fw={600} mb="xs">
+              {selectedPrintTheme.label}
+            </Text>
+            <Box
+              style={{
+                minHeight: 430,
+                background: previewColors.pageBg,
+                color: previewColors.text,
+                border: "1px solid var(--mantine-color-default-border)",
+                borderRadius: 4,
+                padding: "28px 30px",
+                boxShadow: "0 10px 24px rgba(15, 23, 42, 0.12)",
+                fontSize: 13,
+                lineHeight: 1.55,
+              }}
+            >
+              <Text
+                fw={700}
+                style={{ color: previewColors.heading, fontSize: 26, lineHeight: 1.15 }}
+              >
+                Ticket Writing Standards
+              </Text>
+              <Box
+                style={{
+                  height: 1,
+                  background: previewColors.rule,
+                  margin: "14px 0 16px",
+                }}
+              />
+              <Text style={{ color: previewColors.text }}>
+                Good ticket documentation helps with:
+              </Text>
+              <Box component="ul" mt={8} mb={18} pl={22}>
+                {[
+                  "Handover between technicians",
+                  "Faster troubleshooting",
+                  "Better user communication",
+                ].map((item) => (
+                  <Box
+                    component="li"
+                    key={item}
+                    style={{ color: previewColors.text }}
+                  >
+                    <span style={{ color: previewColors.listMarker }}>{item}</span>
+                  </Box>
+                ))}
+              </Box>
+              <Text
+                fw={700}
+                style={{ color: previewColors.headingAlt, fontSize: 18 }}
+              >
+                Discussion Questions
+              </Text>
+              <Text mt={8} style={{ color: previewColors.text }}>
+                What should every <strong style={{ color: previewColors.strong }}>ticket</strong>{" "}
+                include before it is closed?
+              </Text>
+              <Box
+                mt={14}
+                mb={14}
+                pl={14}
+                style={{
+                  borderLeft: `3px solid ${previewColors.quoteBorder}`,
+                  color: previewColors.quoteText,
+                }}
+              >
+                <Text fs="italic" style={{ color: previewColors.quoteText }}>
+                  Write the update so the next person understands the decision,
+                  the action, and the result.
+                </Text>
+              </Box>
+              <Text style={{ color: previewColors.text }}>
+                See the{" "}
+                <span style={{ color: previewColors.link, fontWeight: 600 }}>
+                  escalation checklist
+                </span>{" "}
+                and mark unknowns as{" "}
+                <span
                   style={{
-                    border: selected
-                      ? "1px solid var(--mantine-primary-color-filled)"
-                      : "1px solid var(--mantine-color-default-border)",
-                    borderRadius: 8,
-                    padding: "var(--mantine-spacing-sm)",
+                    color: previewColors.codeText,
+                    background: previewColors.codeBg,
+                    borderRadius: 4,
+                    padding: "1px 5px",
+                    fontFamily: "monospace",
                   }}
                 >
-                  <Group gap="sm" wrap="nowrap">
-                    <Box
-                      style={{
-                        width: 22,
-                        height: 22,
-                        borderRadius: "50%",
-                        backgroundColor: printTheme.swatch,
-                        border: "1px solid var(--mantine-color-default-border)",
-                        flexShrink: 0,
-                      }}
-                    />
-                    <Box style={{ flex: 1 }}>
-                      <Text size="sm" fw={500}>
-                        {printTheme.label}
-                      </Text>
-                      <Text size="xs" c="dimmed">
-                        {printTheme.description}
-                      </Text>
-                    </Box>
-                    {selected && <IconCheck size={16} />}
-                  </Group>
-                </UnstyledButton>
-              );
-            })}
-          </SimpleGrid>
-
-          <Group justify="flex-end">
-            <Button variant="default" onClick={closePrintSettingsModal}>
-              {t("Cancel")}
-            </Button>
-            <Button
-              leftSection={<IconPrinter size={16} />}
-              onClick={() => handlePrint()}
-            >
-              {t("Print PDF")}
-            </Button>
-          </Group>
-        </Stack>
+                  pending
+                </span>
+                .
+              </Text>
+              <Text mt={16} fs="italic" style={{ color: previewColors.emphasis }}>
+                Short, human notes are easier to trust.
+              </Text>
+            </Box>
+          </Box>
+        </Box>
       </Modal>
     </>
   );
